@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 
 import { useAppContext } from "../../../contexts/AppContext";
+import { getOffers } from "../../../testData";
 import OfferItem from "../OfferItem/OfferItem";
 import styles from "./OffersList.module.css";
 import { useEffect } from "react";
 
-function OffersList({ offers = JSON.parse(localStorage.getItem("offers")) }) {
+function OffersList({ offers = getOffers() }) {
   const {
     searchResult,
     setSearchResult,

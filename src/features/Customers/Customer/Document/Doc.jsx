@@ -6,7 +6,12 @@ function Doc() {
   const { customers } = useCustomers();
   const customer = customers?.find((customer) => id === customer.id);
   console.log(customer);
-  return <div>Doc</div>;
+  const src = URL.createObjectURL(customer.photo);
+  return (
+    <div className={styles.doc}>
+      <img src={src} alt="user-document" />
+    </div>
+  );
 }
 
 export default Doc;

@@ -5,11 +5,9 @@ import { useAppContext } from "../../../contexts/AppContext";
 
 import styles from "./CustomersList.module.css";
 import Customer from "../CustomerItem/Customer";
+import { getCustomers } from "../../../testData";
 
-
-function CustomersList({
-  customers = JSON.parse(localStorage.getItem("customersLot")),
-}) {
+function CustomersList({ customers = getCustomers() }) {
   const { currentPage, recordPerPage, searchResult } = useAppContext();
 
   const index = recordPerPage * currentPage;

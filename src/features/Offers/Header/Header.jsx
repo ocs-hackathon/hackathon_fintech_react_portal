@@ -4,14 +4,14 @@ import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
 import styles from "./Header.module.css";
 import { getAllOffers } from "../../../services/apiLoan";
+import { getOffers } from "../../../testData";
 
 function Header() {
   const { setSearchResult, setShowModal } = useAppContext();
-  const { data: offers = JSON.parse(localStorage.getItem("offers")) } =
-    useQuery({
-      queryKey: ["offers"],
-      queryFn: getAllOffers,
-    });
+  const { data: offers = getOffers() } = useQuery({
+    queryKey: ["offers"],
+    queryFn: getAllOffers,
+  });
   function searchOffer(searchKey) {
     console.log(searchKey);
     if (searchKey.length < 3) {
