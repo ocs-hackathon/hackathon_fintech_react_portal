@@ -1,0 +1,12 @@
+.app {
+  display: grid;
+  grid-template-columns: 30rem 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+@media (max-width:800px) {
+  .app{
+    grid-template-columns: 10rem 1fr;
+  }
+  
+}

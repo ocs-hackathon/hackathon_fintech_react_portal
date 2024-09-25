@@ -1,0 +1,17 @@
+.logo {
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.logoImg {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: transparent;
+}
+@media (max-width: 800px) {
+  .logoImg {
+    width: 8rem;
+    height: 8rem;
+  }
+}

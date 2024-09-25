@@ -1,0 +1,81 @@
+.wrapper {
+  padding: 5rem;
+  background-color: var(--color-grey-0);
+  border-radius: 10px;
+  position: relative;
+  min-width: 1000px;
+  display: flex;
+  gap: 2rem;
+}
+.bg {
+  background: linear-gradient(var(--color-primary-light), rgba(0, 0, 0, 0.195)),
+    url(../../../../public/loan.jpg);
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px 0 0 10px;
+}
+.open {
+  width: 50%;
+}
+.wrapper h1 {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+}
+.icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: var(--color-grey-500);
+}
+.icon:hover {
+  color: var(--color-grey-700);
+}
+.box {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+}
+.box input {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--color-grey-400);
+  padding: 5px 10px;
+}
+.box input:focus {
+  border-color: var(--color-primary);
+}
+.wrapper form div {
+  margin: 2rem 0;
+}
+.wrapper div.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+.btn {
+  background: none;
+  border: 1px solid var(--color-grey-400);
+  padding: 3px 20px;
+  border-radius: 5px;
+}
+.btn:hover {
+  border-color: var(--color-primary);
+}
+.create {
+  background-color: var(--color-primary);
+  color: var(--color-grey-0);
+  border-color: var(--color-grey-0);
+}
+.wrapper form .error {
+  grid-column: 2/-1;
+  margin: 0;
+}
+.wrapper form .error p {
+  margin: -1.5rem 0 0 -1.5rem;
+}

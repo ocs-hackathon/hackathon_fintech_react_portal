@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 5rem;
+  border-radius: 10px;
+}
+.form h1 {
+  text-align: center;
+}
+.inputBox label,
+.eyeIcon {
+  position: absolute;
+  left: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.eyeIcon {
+  background-color: inherit;
+  border: none;
+  width: 20px;
+  top: 0;
+  left: 37rem;
+  font-size: 1.8rem;
+}
+.inputBox input {
+  padding: 0.7rem 1rem 0.7rem 4rem;
+  width: 40rem;
+  border-radius: 30px;
+  outline: 0;
+  color: var(--color-grey-600);
+  border: 1px solid #00000065;
+}
+.inputBox input::placeholder {
+  color: var(--color-grey-500);
+}
+.inputBox input:focus {
+  border-color: var(--color-primary);
+}
+.inputCheckBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.inputCheckBox input {
+  accent-color: var(--color-primary);
+  width: 2rem;
+  height: 2rem;
+}
+.inputBox label svg,
+.eyeIcon svg {
+  color: var(--color-primary);
+}
+.inputBox {
+  position: relative;
+  gap: 1rem;
+}
+.error {
+  border-color: var(--color-error) !important;
+}
+.btn {
+  background-color: var(--color-primary);
+  color: var(--color-grey-100);
+  text-transform: capitalize;
+  padding: 5px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: var(--color-primary-strong);
+}

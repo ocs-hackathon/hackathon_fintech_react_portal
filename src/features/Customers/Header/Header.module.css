@@ -1,0 +1,79 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+.btns {
+  display: flex;
+  gap: 2rem;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--color-grey-500);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.btn:focus,
+.btn:hover,
+.search input:focus,
+.search input:hover {
+  border-color: var(--color-primary);
+}
+.btn svg {
+  font-size: 2rem;
+  font-weight: 900;
+}
+.filter,
+.sort {
+  position: relative;
+}
+.detail {
+  font-size: 1.4rem;
+}
+.detailH {
+  color: var(--color-grey-400);
+  margin-bottom: 1rem;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.input {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--color-grey-200);
+  background-color: var(--color-grey-50);
+  border-radius: 5px;
+  padding: 5px;
+}
+.input::placeholder {
+  color: var(--color-grey-400);
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  border: none !important;
+  padding-top: 2rem !important;
+}
+.inputBox,
+.flex {
+  padding-left: 1rem;
+}
+.btn {
+  border: 1px solid var(--color-grey-400);
+}
+.apply {
+  background-color: var(--color-primary);
+  color: var(--color-grey-0);
+  border-color: var(--color-primary);
+}
+.input:focus {
+  border-color: var(--color-primary);
+}

@@ -1,0 +1,39 @@
+.login {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  background-color: var(--color-grey-100);
+}
+.logo {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.leftBg {
+  background: linear-gradient(var(--color-primary-light), rgba(0, 0, 0, 0.195)),
+    url(../../assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background-color: var(--color-grey-100);
+}
+.heading{
+  font-size: 5rem;
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .login {
+    grid-template-columns: 1fr;
+  }
+  .wrapper {
+    border-radius: 40px 0 0 40px;
+  }
+}

@@ -1,0 +1,40 @@
+.user {
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-100);
+  border-top: 1px solid var(--color-grey-100);
+  padding: 2rem 0;
+  cursor: pointer;
+}
+.name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.name img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.status {
+  border: 1px solid;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  width: 9rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+.pending {
+  background-color: #ffb94194;
+  color: #ffa200;
+  border-color: #ffa200;
+}
+.blocked {
+  background-color: #ea434384;
+  color: #f00101d2;
+  border-color: #f00101d2;
+}
+.active {
+  background-color: #58b65884;
+  color: #028702;
+  border-color: #028702;
+}

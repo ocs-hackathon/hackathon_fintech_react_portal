@@ -1,0 +1,23 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+.left {
+  color: var(--color-grey-400);
+}
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+.btns button {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-grey-200);
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+}
+.btns button.active {
+  background-color: var(--color-primary);
+  color: var(--color-grey-0);
+}

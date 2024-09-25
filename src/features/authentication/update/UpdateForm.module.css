@@ -1,0 +1,42 @@
+.update {
+  padding: 2rem;
+  margin-top: 5rem;
+}
+.update form div {
+  margin: 2rem 0;
+}
+.update p {
+  margin-bottom: 5px;
+  color: var(--color-grey-700);
+}
+.update input {
+  outline: none;
+  border: 1px solid var(--color-grey-200);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(184, 184, 184, 0.2); /* Shadow effect */
+  padding: 5px 20px;
+  width: 350px;
+}
+.update input:focus {
+  border-color: var(--color-primary); /* Change border color on focus */
+}
+.update input::placeholder {
+  color: #00000037;
+}
+.avatar {
+  display: flex;
+  gap: 2rem;
+}
+.avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.btn {
+  border: 1px solid var(--color-grey-0);
+  background-color: var(--color-primary);
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: var(--color-grey-0);
+  width: 350px;
+}

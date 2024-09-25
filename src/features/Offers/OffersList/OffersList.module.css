@@ -1,0 +1,11 @@
+.list{
+    padding: 30px 0;
+}
+.list li{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    gap: 2rem;
+}
+.headingList{
+    color: var(--color-grey-400);
+}
