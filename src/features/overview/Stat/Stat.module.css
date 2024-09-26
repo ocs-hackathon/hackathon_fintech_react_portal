@@ -1,0 +1,21 @@
+.stat {
+  background-color: var(--color-grey-0);
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon svg {
+  font-size: 3.5rem;
+}

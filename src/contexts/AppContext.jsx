@@ -12,8 +12,7 @@ function AppContextProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
   const [admin, setAdmin] = useState({
     name: "Ahadu Sefefe",
-    email: "ahadu_sefe@gmail.com",
-    password: "12345678",
+    email: "ahadu_sefefe@gmail.com",
   });
   const recordPerPage = 7;
   return (

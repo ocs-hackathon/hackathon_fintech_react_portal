@@ -1,0 +1,14 @@
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.title {
+  font-size: small;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-grey-500);
+}
+.stats h3{
+    font-size: 3rem;
+}

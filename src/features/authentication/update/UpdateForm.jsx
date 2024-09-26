@@ -2,12 +2,15 @@ import { useForm } from "react-hook-form";
 import { useAppContext } from "../../../contexts/AppContext";
 import styles from "./UpdateForm.module.css";
 import { updateAdmin } from "../../../services/apiAdmin";
+import toast from "react-hot-toast";
 function UpdateForm() {
   const { admin } = useAppContext();
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   function onSubmit(data) {
-    updateAdmin(data);
     reset();
+    if ((data.currPass || data.newPass) && !(data.currPass && data.newPass))
+      toast.error(`Make sure to fill your previous password!`);
+    updateAdmin(data);
   }
   return (
     <div className={styles.update}>

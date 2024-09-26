@@ -1,6 +1,6 @@
 export async function getAllOffers() {
   const { acessToken } = this;
-  const res = await fetch(``, {
+  const res = await fetch(`/getOffers`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -12,7 +12,7 @@ export async function getAllOffers() {
 }
 
 export async function createLoanOffer(offer, acessToken) {
-  const res = await fetch(``, {
+  const res = await fetch(`/createOffer?id=`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

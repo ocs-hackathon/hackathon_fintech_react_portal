@@ -11,6 +11,7 @@
   background: linear-gradient(var(--color-primary-light), rgba(0, 0, 0, 0.195)),
     url(../../../../public/loan.jpg);
   background-repeat: no-repeat;
+  background-position: center;
   width: 50%;
   height: 100%;
   position: absolute;

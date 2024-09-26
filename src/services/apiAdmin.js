@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 
 export async function login(credentials) {
   try {
-    const res = await fetch(``, {
+    const res = await fetch(`/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),

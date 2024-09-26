@@ -7,3 +7,7 @@ export function formatDate(timestamp = Date.now()) {
   });
   return formatter.format(date);
 }
+
+export function formatMoney(num) {
+  console.log(num);
+}
