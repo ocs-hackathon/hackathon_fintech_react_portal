@@ -3,7 +3,7 @@
   border-bottom: 1px solid var(--color-grey-100);
   border-top: 1px solid var(--color-grey-100);
   padding: 2rem 0;
-  cursor: pointer;
+  color: var(--color-grey-500);
 }
 .status {
   border: 1px solid;
@@ -14,12 +14,12 @@
   text-align: center;
 }
 .granted {
-  background-color: #ffb94194;
+  background-color: var(--bg-pending);
   color: #ffa200;
   border-color: #ffa200;
 }
 .active {
-  background-color: #58b65884;
+  background-color: var(--bg-active);
   color: #028702;
   border-color: #028702;
 }

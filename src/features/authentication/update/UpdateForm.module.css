@@ -14,7 +14,7 @@
   outline: none;
   border: 1px solid var(--color-grey-200);
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(184, 184, 184, 0.2); /* Shadow effect */
+  background-color: var(--color-grey-0);
   padding: 5px 20px;
   width: 350px;
 }
@@ -22,7 +22,7 @@
   border-color: var(--color-primary); /* Change border color on focus */
 }
 .update input::placeholder {
-  color: #00000037;
+  color: var(--color-grey-400);
 }
 .avatar {
   display: flex;

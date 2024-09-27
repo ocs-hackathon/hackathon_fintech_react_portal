@@ -16,7 +16,7 @@
   border-radius: 50px;
   outline: none;
   border: 1px solid var(--color-grey-500);
-  background-color: #efefefb1;
+  background-color: var(--color-grey-0);
 }
 .search input::placeholder {
   color: var(--color-grey-400);

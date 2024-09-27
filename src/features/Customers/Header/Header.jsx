@@ -40,10 +40,18 @@ function Header() {
           placeholder="Search by Name | email | id"
         />
         <div className={styles.btns}>
-          <div className={styles.sort} onClick={() => setIsSortOpened(true)}>
-            <button className={styles.btn}>
-              <BiSortAlt2 />
-              <span>Sort by</span>
+          <div className={styles.sort}>
+            <div>
+              <button
+                className={styles.btn}
+                onClick={() => {
+                  setIsFilterOpened(false);
+                  setIsSortOpened(true);
+                }}
+              >
+                <BiSortAlt2 />
+                <span>Sort by</span>
+              </button>
               {isSortOpened && (
                 <Box>
                   <form action="">
@@ -52,7 +60,7 @@ function Header() {
                     </div>
                     <div className={styles.detail}>
                       <p className={styles.detailH}>Type</p>
-                      <p>
+                      <main>
                         <p className={styles.flex}>
                           <input type="radio" id="asc" name="sort" />
                           &nbsp;
@@ -63,7 +71,7 @@ function Header() {
                           &nbsp;
                           <label htmlFor="dsc">Descending</label>
                         </p>
-                      </p>
+                      </main>
                     </div>
                     <div className={styles.detail}>
                       <p className={styles.detailH}>Field</p>
@@ -76,8 +84,14 @@ function Header() {
                       </p>
                     </div>
                     <div className={styles.btns}>
-                      <button type="reset" className={styles.btn}>
-                        Reset
+                      <button
+                        className={styles.btn}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsSortOpened(false);
+                        }}
+                      >
+                        Cancel
                       </button>
                       <button className={`${styles.apply} ${styles.btn}`}>
                         Apply
@@ -86,15 +100,21 @@ function Header() {
                   </form>
                 </Box>
               )}
-            </button>
+            </div>
           </div>
-          <div
-            className={styles.filter}
-            onClick={() => setIsFilterOpened((state) => !state)}
-          >
-            <button className={styles.btn}>
-              <CiSliderHorizontal />
-              <span>Filter</span>
+          <div className={styles.filter}>
+            <div>
+              <button
+                className={styles.btn}
+                onClick={() => {
+                  setIsSortOpened(false);
+                  setIsFilterOpened(true);
+                }}
+              >
+                <CiSliderHorizontal />
+                <span>Filter</span>
+              </button>
+
               {isFilterOpened && (
                 <Box>
                   <form action="">
@@ -120,8 +140,14 @@ function Header() {
                     </div>
 
                     <div className={styles.btns}>
-                      <button type="reset" className={styles.btn}>
-                        Reset
+                      <button
+                        className={styles.btn}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsFilterOpened(false);
+                        }}
+                      >
+                        Cancel
                       </button>
                       <button className={`${styles.apply} ${styles.btn}`}>
                         Apply
@@ -130,7 +156,7 @@ function Header() {
                   </form>
                 </Box>
               )}
-            </button>
+            </div>
           </div>
         </div>
       </div>

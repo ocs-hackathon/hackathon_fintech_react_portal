@@ -27,7 +27,7 @@
   font-weight: 500;
 }
 .header svg {
-  color: var(--color-grey-500);
+  color: var(--color-primary);
   font-size: 2rem;
   cursor: pointer;
 }

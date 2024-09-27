@@ -1,28 +1,29 @@
 .user {
-  align-items: center;
-  border-bottom: 1px solid var(--color-grey-100);
-  border-top: 1px solid var(--color-grey-100);
-  padding: 2rem 0;
-  color: var(--color-grey-500);
-  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+  margin-bottom: 1rem;
+}
+.left {
+  display: flex;
+  flex-direction: column;
 }
 .name {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  font-weight: 700;
+  font-size: small;
 }
-.name img {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
+.date {
+  font-size: 1.2rem;
 }
 .status {
+  font-size: small;
   border: 1px solid;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
-  width: 9rem;
+  width: 7rem;
   text-transform: capitalize;
   text-align: center;
+  height: fit-content;
 }
 .pending {
   background-color: var(--bg-pending);

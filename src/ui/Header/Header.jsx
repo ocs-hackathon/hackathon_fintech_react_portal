@@ -1,23 +1,23 @@
 import { useNavigate } from "react-router-dom";
 
-// import { HiMoon } from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 import { MdOutlineLogout } from "react-icons/md";
-// import { IoMdSunny } from "react-icons/io";
+import { IoMdSunny } from "react-icons/io";
 
 import styles from "./Header.module.css";
 import { useAppContext } from "../../contexts/AppContext";
-// import { useAppContext } from "../../contexts/AppContext";
-// import { FaBell } from "react-icons/fa";
+import { useEffect } from "react";
 
 function Header() {
-  // const { isDarkMode, toggleDarkMode } = useAppContext();
+  const { isDarkMode, toggleDarkMode } = useAppContext();
   const navigate = useNavigate();
   const { admin } = useAppContext();
+
   function logout() {
-    // remove user_id cookie
-    // redirect to login
     navigate("/login");
   }
+
+  
   return (
     <div className={styles.header}>
       <div className={styles.profile}>
@@ -29,11 +29,11 @@ function Header() {
         <span className={styles.admin}>{admin.name}</span>
       </div>
       <div className={styles.icons}>
-        {/* {isDarkMode ? (
+        {isDarkMode ? (
           <IoMdSunny onClick={() => toggleDarkMode((mode) => !mode)} />
         ) : (
           <HiMoon onClick={() => toggleDarkMode((mode) => !mode)} />
-        )} */}
+        )}
         <MdOutlineLogout onClick={logout} />
       </div>
     </div>

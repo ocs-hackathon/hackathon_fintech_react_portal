@@ -8,8 +8,7 @@
   gap: 2rem;
 }
 .bg {
-  background: linear-gradient(var(--color-primary-light), rgba(0, 0, 0, 0.195)),
-    url(../../../../public/loan.jpg);
+  background: var(--gradient-bg-loan);
   background-repeat: no-repeat;
   background-position: center;
   width: 50%;
@@ -47,6 +46,7 @@
   border-radius: 5px;
   border: 1px solid var(--color-grey-400);
   padding: 5px 10px;
+  background-color: var(--color-grey-0);
 }
 .box input:focus {
   border-color: var(--color-primary);

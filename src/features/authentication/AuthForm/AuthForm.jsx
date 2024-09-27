@@ -8,6 +8,7 @@ import styles from "./AuthForm.module.css";
 import { login, signup } from "../../../services/apiAdmin";
 import Error from "../../../ui/Error/Error";
 import { useAppContext } from "../../../contexts/AppContext";
+import { HiOutlineUser } from "react-icons/hi2";
 
 // eslint-disable-next-line react/prop-types
 function AuthForm({ type }) {
@@ -33,7 +34,7 @@ function AuthForm({ type }) {
       {type === "signup" && (
         <div className={styles.inputBox}>
           <label htmlFor="name">
-            <HiOutlineMail />
+            <HiOutlineUser />
           </label>
           <input
             type="text"

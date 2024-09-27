@@ -7,15 +7,15 @@
   width: max-content;
   margin-top: 3rem;
 }
-.user .header{
+.user .header {
   display: flex;
   gap: 2rem;
   align-items: center;
   margin-top: 2rem;
 }
-.user div img{
-  width: 200px;
-  height: 200px;
+.user div img {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 .navbar :global(.active) {

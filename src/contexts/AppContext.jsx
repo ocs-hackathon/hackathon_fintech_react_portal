@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AppContext = createContext();
 
@@ -15,6 +15,15 @@ function AppContextProvider({ children }) {
     email: "ahadu_sefefe@gmail.com",
   });
   const recordPerPage = 7;
+
+  useEffect(
+    function () {
+      if (isDarkMode) document.documentElement.className = "dark-mode";
+      else document.documentElement.className = "light-mode";
+    },
+    [isDarkMode]
+  );
+
   return (
     <AppContext.Provider
       value={{

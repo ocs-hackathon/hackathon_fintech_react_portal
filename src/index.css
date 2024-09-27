@@ -1,20 +1,5 @@
-/*
-
-*/
-
 /* Colors from the mobile app */
-
-:root {
-  /* Lavender */
-  --color-lavender-50: #f7f2ff;
-  --color-lavender-100: #efe5ff;
-  --color-lavender-200: #e1cfff;
-  --color-lavender-500: #7a5cab;
-  --color-lavender-600: #674899;
-  --color-lavender-700: #543980;
-  --color-lavender-800: #3f2766;
-  --color-lavender-900: #311d52;
-
+:root.light-mode {
   /* Grey */
   --color-grey-0: #fff;
   --color-grey-50: #f9fafb;
@@ -36,9 +21,58 @@
   /* Border colors */
   --color-border-light: #00000065;
 
+  /* background gradient with image */
+  --gradient-bg: linear-gradient(
+      var(--color-primary-light),
+      rgba(0, 0, 0, 0.195)
+    ),
+    url(../src/assets/bg.jpg);
+  --gradient-bg-loan: linear-gradient(
+      var(--color-primary-light),
+      rgba(0, 0, 0, 0.195)
+    ),
+    url(../../../../public/loan.jpg);
+
   /* Error */
   --color-error: #ff0000d1;
 
+  /* status */
+  --bg-active: #58b65884;
+  --bg-blocked: #ea434384;
+  --bg-pending: #ffb94194;
+}
+:root.dark-mode {
+  --color-grey-0: #18212f;
+  --color-grey-50: #111827;
+  --color-grey-100: #1f2937;
+  --color-grey-200: #374151;
+  --color-grey-300: #4b5563;
+  --color-grey-400: #6b7280;
+  --color-grey-500: #9ca3af;
+  --color-grey-600: #d1d5db;
+  --color-grey-700: #e5e7eb;
+  --color-grey-800: #f3f4f6;
+  --color-grey-900: #f9fafb;
+
+  --color-primary: #b88dfe;
+  --color-primary-light: #e55a53a1;
+  --color-primary-xlight: #e55a5326;
+  --color-primary-strong: #e2473f;
+
+  /* gradients */
+
+  --gradient-bg: linear-gradient(rgba(4, 9, 30, 0.6), rgba(4, 9, 30, 0.6)),
+    url(/src/assets/bg.jpg);
+  --gradient-bg-loan: linear-gradient(rgba(4, 9, 30, 0.6), rgba(4, 9, 30, 0.6)),
+    url(../../../../public/loan.jpg);
+
+  --color-error: #ff4848db;
+
+  --bg-active: #58b65825;
+  --bg-blocked: #ea434327;
+  --bg-pending: #ffb9411c;
+}
+:root {
   --backdrop-color: rgba(255, 255, 255, 0.1);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -49,6 +83,7 @@
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
+  --main-max-height: calc(100vh-100px);
 }
 
 *,

@@ -28,7 +28,7 @@ function Stats() {
           <h3>40</h3>
         </div>
       </Stat>
-      <Stat bgColor="#e0e7ff" iconColor="" icon={<VscGraph />}>
+      <Stat bgColor="#e0e7ff" iconColor="#374151" icon={<VscGraph />}>
         <div>
           <span className={styles.title}>Aceptance rate</span>
           <h3>60%</h3>

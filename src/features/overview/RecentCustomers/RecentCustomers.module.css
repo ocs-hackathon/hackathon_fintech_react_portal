@@ -1,0 +1,9 @@
+.recent {
+  background-color: var(--color-grey-0);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  width: fit-content;
+}
+.recent h3 {
+  margin-bottom: 2rem;
+}
