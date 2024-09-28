@@ -9,12 +9,66 @@ import Input from "../../../ui/Input/Input";
 import { useAppContext } from "../../../contexts/AppContext";
 import { useCustomers } from "../useCustomers";
 import { getCustomers } from "../../../testData";
+import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 function Header() {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
   const [isSortOpened, setIsSortOpened] = useState(false);
   const { setSearchResult } = useAppContext();
   const { customers = getCustomers() } = useCustomers();
+  const customersCpy = [...customers];
+
+  const { register, handleSubmit, reset } = useForm();
+
+  function onSort(data) {
+    const { sortType = "asc", sortField } = data;
+    if (
+      !Object.keys(customers.at(0))
+        .map((el) => el.toLowerCase())
+        .includes(sortField.toLowerCase())
+    ) {
+      toast.error(`${sortField} can't be used to sort customers`);
+      reset();
+      setIsSortOpened(false);
+      return;
+    }
+
+    customersCpy.sort((a, b) => {
+      if (typeof a[sortField] === "number")
+        return sortType === "asc"
+          ? a[sortField] - b[sortField]
+          : b[sortField] - a[sortField];
+
+      return sortType === "asc"
+        ? a[sortField].localeCompare(b[sortField])
+        : b[sortField].localeCompare(a[sortField]);
+    });
+    setSearchResult(customersCpy);
+    setIsSortOpened(false);
+    reset();
+  }
+
+  function onFilter(data) {
+    const { filterValue, filterField } = data;
+    console.log(filterField, filterValue);
+    if (!filterValue || !filterField) {
+      toast.error(
+        `Unable to filter the customers data. make sure to specifiy both filter value and field. `
+      );
+      reset();
+      setIsFilterOpened(false);
+      return;
+    }
+    const filtered = customers.filter((customer) =>
+      typeof customer[filterField] === "number"
+        ? customer[filterField] === filterValue
+        : customer[filterField].toLowerCase() === filterValue.toLowerCase()
+    );
+    setSearchResult(filtered);
+    reset();
+    setIsFilterOpened(false);
+  }
 
   function searchCustomer(searchKey) {
     if (searchKey.length < 3) {
@@ -54,7 +108,7 @@ function Header() {
               </button>
               {isSortOpened && (
                 <Box>
-                  <form action="">
+                  <form action="" onSubmit={handleSubmit(onSort)}>
                     <div>
                       <p>Sort by</p>
                     </div>
@@ -62,12 +116,24 @@ function Header() {
                       <p className={styles.detailH}>Type</p>
                       <main>
                         <p className={styles.flex}>
-                          <input type="radio" id="asc" name="sort" />
+                          <input
+                            type="radio"
+                            id="asc"
+                            name="sort"
+                            value="asc"
+                            {...register("sortType")}
+                          />
                           &nbsp;
                           <label htmlFor="asc">Ascending</label>
                         </p>
                         <p className={styles.flex}>
-                          <input type="radio" id="dsc" name="sort" />
+                          <input
+                            type="radio"
+                            id="dsc"
+                            name="sort"
+                            value="dsc"
+                            {...register("sortType")}
+                          />
                           &nbsp;
                           <label htmlFor="dsc">Descending</label>
                         </p>
@@ -80,6 +146,7 @@ function Header() {
                           className={styles.input}
                           type="text"
                           placeholder="Enter name of field..."
+                          {...register("sortField")}
                         />
                       </p>
                     </div>
@@ -117,7 +184,7 @@ function Header() {
 
               {isFilterOpened && (
                 <Box>
-                  <form action="">
+                  <form action="" onSubmit={handleSubmit(onFilter)}>
                     <div>
                       <p>Filter</p>
                     </div>
@@ -127,6 +194,7 @@ function Header() {
                         className={styles.input}
                         type="text"
                         placeholder="Enter name of field..."
+                        {...register("filterField")}
                       />
                     </div>
 
@@ -136,6 +204,7 @@ function Header() {
                         className={styles.input}
                         type="text"
                         placeholder="Enter value..."
+                        {...register("filterValue")}
                       />
                     </div>
 

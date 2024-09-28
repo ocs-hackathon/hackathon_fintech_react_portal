@@ -2,7 +2,7 @@
   display: flex;
   padding: 1rem 0.5rem;
   background-color: var(--color-grey-200);
-  border-radius: 0.8rem;
+  border-radius: 0.8rem 0.8rem 0 0;
   gap: 3rem;
   width: max-content;
   margin-top: 3rem;

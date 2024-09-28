@@ -8,13 +8,16 @@ import Customer from "../CustomerItem/Customer";
 import { getCustomers } from "../../../testData";
 
 function CustomersList({ customers = getCustomers() }) {
-  const { currentPage, recordPerPage, searchResult } = useAppContext();
+  const { currentPage, recordPerPage, searchResult = [] } = useAppContext();
 
   const index = recordPerPage * currentPage;
   const lastIndex = index > customers?.length ? customers?.length : index;
   const rem = index - lastIndex;
   const firstIndex = lastIndex - recordPerPage;
   const customersPerPage = customers?.slice(firstIndex + rem, lastIndex);
+  const searchResultPerPage = searchResult?.length
+    ? searchResult?.slice(firstIndex + rem, lastIndex)
+    : searchResult;
 
   return (
     <ul className={styles.list}>
@@ -28,7 +31,7 @@ function CustomersList({ customers = getCustomers() }) {
       </li>
 
       {Object.keys(searchResult).length
-        ? searchResult?.map((customer) => (
+        ? searchResultPerPage?.map((customer) => (
             <Customer key={customer.id} customer={customer} />
           ))
         : customersPerPage?.map((customer) => (
