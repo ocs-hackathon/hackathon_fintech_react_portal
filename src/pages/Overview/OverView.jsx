@@ -17,7 +17,7 @@ function OverView() {
     queryFn: getAllOffers.bind({ acessToken }),
   });
 
-  if (isLoading) return <Spinner />;
+  // if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.overview}>
