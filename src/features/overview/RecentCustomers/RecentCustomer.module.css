@@ -1,7 +1,7 @@
 .user {
-  display: flex;
-  justify-content: space-between;
-  gap: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  gap: 5rem;
   margin-bottom: 1rem;
 }
 .left {
@@ -20,10 +20,10 @@
   border: 1px solid;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
-  width: 7rem;
+  width: max-content;
+  height: fit-content;
   text-transform: capitalize;
   text-align: center;
-  height: fit-content;
 }
 .pending {
   background-color: var(--bg-pending);

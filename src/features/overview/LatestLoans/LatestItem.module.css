@@ -1,0 +1,26 @@
+.offer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 2rem;
+}
+.bold {
+  font-weight: 600;
+}
+.status {
+  border: 1px solid;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 9rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+.granted {
+  background-color: var(--bg-pending);
+  color: #ffa200;
+  border-color: #ffa200;
+}
+.active {
+  background-color: var(--bg-active);
+  color: #028702;
+  border-color: #028702;
+}

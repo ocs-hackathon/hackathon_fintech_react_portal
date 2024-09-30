@@ -5,9 +5,10 @@ import Input from "../../../ui/Input/Input";
 import styles from "./Header.module.css";
 import { getAllOffers } from "../../../services/apiLoan";
 import { getOffers } from "../../../testData";
+import { useEffect } from "react";
 
 function Header() {
-  const { setSearchResult, setShowModal } = useAppContext();
+  const { setSearchResult, setShowModal, setTotalPages } = useAppContext();
   const { data: offers = getOffers() } = useQuery({
     queryKey: ["offers"],
     queryFn: getAllOffers,
@@ -27,6 +28,14 @@ function Header() {
     );
     setSearchResult(searchResults);
   }
+
+  useEffect(
+    function () {
+      setTotalPages(offers.length);
+    },
+    [setTotalPages,offers]
+  );
+
   return (
     <div className={styles.header}>
       <Date />

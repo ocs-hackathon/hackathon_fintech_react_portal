@@ -1,15 +1,18 @@
+/* eslint-disable react/prop-types */
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useAppContext } from "../../contexts/AppContext";
 import styles from "./Pagination.module.css";
 
-// eslint-disable-next-line react/prop-types
-function Pagination({ total = 50 }) {
-  const { currentPage, setCurrentPage, recordPerPage } = useAppContext();
+function Pagination({ total }) {
+  const { currentPage, setCurrentPage, recordPerPage, totalPages } =
+    useAppContext();
+  const totalPage = total || totalPages;
+
   const index = recordPerPage * currentPage;
-  const lastIndex = index > total ? total : index;
+  const lastIndex = index > totalPage ? totalPage : index;
   const rem = index - lastIndex + 1;
   const firstIndex = lastIndex - recordPerPage;
-  const nPage = Math.ceil(total / recordPerPage);
+  const nPage = Math.ceil(totalPage / recordPerPage);
   const nBtnDisplayed = 2;
   const nBtnsToDisplay = 3;
   function updatePageNum(pageNum) {
@@ -19,7 +22,7 @@ function Pagination({ total = 50 }) {
   return (
     <div className={styles.pagination}>
       <span className={styles.left}>
-        Showing data {firstIndex + rem} to {lastIndex} of {total} entries
+        Showing data {firstIndex + rem} to {lastIndex} of {totalPage} entries
       </span>
       <div className={styles.btns}>
         <button onClick={() => updatePageNum(currentPage - 1)}>

@@ -19,7 +19,7 @@ function Stats() {
       >
         <div>
           <span className={styles.title}>Total loans</span>
-          <h3>$4.1M</h3>
+          <h3>$54,300,000</h3>
         </div>
       </Stat>
       <Stat bgColor="#4caf4f24" iconColor="#4caf50" icon={<FcMoneyTransfer />}>

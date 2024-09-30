@@ -15,6 +15,7 @@ function AppContextProvider({ children }) {
     email: "ahadu_sefefe@gmail.com",
   });
   const recordPerPage = 7;
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(
     function () {
@@ -42,6 +43,8 @@ function AppContextProvider({ children }) {
         setShowModal,
         admin,
         setAdmin,
+        totalPages,
+        setTotalPages,
       }}
     >
       {children}

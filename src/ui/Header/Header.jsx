@@ -6,7 +6,7 @@ import { IoMdSunny } from "react-icons/io";
 
 import styles from "./Header.module.css";
 import { useAppContext } from "../../contexts/AppContext";
-import { useEffect } from "react";
+
 
 function Header() {
   const { isDarkMode, toggleDarkMode } = useAppContext();

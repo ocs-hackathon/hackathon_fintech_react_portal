@@ -6,9 +6,15 @@ import { useAppContext } from "../../../contexts/AppContext";
 import styles from "./CustomersList.module.css";
 import Customer from "../CustomerItem/Customer";
 import { getCustomers } from "../../../testData";
+import { useEffect } from "react";
 
 function CustomersList({ customers = getCustomers() }) {
-  const { currentPage, recordPerPage, searchResult = [] } = useAppContext();
+  const {
+    currentPage,
+    recordPerPage,
+    searchResult = [],
+    setTotalPages,
+  } = useAppContext();
 
   const index = recordPerPage * currentPage;
   const lastIndex = index > customers?.length ? customers?.length : index;
@@ -18,6 +24,15 @@ function CustomersList({ customers = getCustomers() }) {
   const searchResultPerPage = searchResult?.length
     ? searchResult?.slice(firstIndex + rem, lastIndex)
     : searchResult;
+
+  useEffect(
+    function () {
+      setTotalPages(
+        searchResult.length ? searchResult.length : customers.length
+      );
+    },
+    [searchResult.length, setTotalPages, customers]
+  );
 
   return (
     <ul className={styles.list}>

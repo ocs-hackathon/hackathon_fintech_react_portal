@@ -15,4 +15,5 @@ function RecentCustomer({ customer }) {
   );
 }
 
+
 export default RecentCustomer;

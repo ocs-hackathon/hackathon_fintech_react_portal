@@ -18,7 +18,6 @@ function Header() {
   const { setSearchResult } = useAppContext();
   const { customers = getCustomers() } = useCustomers();
   const customersCpy = [...customers];
-
   const { register, handleSubmit, reset } = useForm();
 
   function onSort(data) {
@@ -28,7 +27,7 @@ function Header() {
         .map((el) => el.toLowerCase())
         .includes(sortField.toLowerCase())
     ) {
-      toast.error(`${sortField} can't be used to sort customers`);
+      toast.error(`The specified field can't be used to sort customers`);
       reset();
       setIsSortOpened(false);
       return;
@@ -51,7 +50,6 @@ function Header() {
 
   function onFilter(data) {
     const { filterValue, filterField } = data;
-    console.log(filterField, filterValue);
     if (!filterValue || !filterField) {
       toast.error(
         `Unable to filter the customers data. make sure to specifiy both filter value and field. `

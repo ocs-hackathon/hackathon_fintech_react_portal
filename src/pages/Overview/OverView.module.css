@@ -6,3 +6,8 @@
 .overview h1{
     margin-bottom: 3rem;
 }
+.recents{
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+}
