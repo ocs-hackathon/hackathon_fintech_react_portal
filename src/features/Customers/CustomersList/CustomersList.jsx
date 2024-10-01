@@ -5,16 +5,11 @@ import { useAppContext } from "../../../contexts/AppContext";
 
 import styles from "./CustomersList.module.css";
 import Customer from "../CustomerItem/Customer";
-import { getCustomers } from "../../../testData";
 import { useEffect } from "react";
 
-function CustomersList({ customers = getCustomers() }) {
-  const {
-    currentPage,
-    recordPerPage,
-    searchResult = [],
-    setTotalPages,
-  } = useAppContext();
+function CustomersList({ customers }) {
+  const { currentPage, recordPerPage, searchResult, setTotalPages } =
+    useAppContext();
 
   const index = recordPerPage * currentPage;
   const lastIndex = index > customers?.length ? customers?.length : index;
@@ -40,7 +35,7 @@ function CustomersList({ customers = getCustomers() }) {
         <span>User Id</span>
         <span>Name</span>
         <span>Email</span>
-        <span>Country</span>
+        <span>Address</span>
         <span>Status</span>
         <span>Loan</span>
       </li>

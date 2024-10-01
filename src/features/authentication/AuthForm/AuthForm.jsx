@@ -7,28 +7,50 @@ import { HiLockClosed, HiOutlineMail } from "react-icons/hi";
 import styles from "./AuthForm.module.css";
 import { login, signup } from "../../../services/apiAdmin";
 import Error from "../../../ui/Error/Error";
-import { useAppContext } from "../../../contexts/AppContext";
 import { HiOutlineUser } from "react-icons/hi2";
+import { useAppContext } from "../../../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function AuthForm({ type }) {
-  const { setAdmin } = useAppContext();
+  const { setAccessToken } = useAppContext();
   const [isVisible, setIsVisible] = useState(false);
-  const { handleSubmit, register, formState, reset } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+  const { handleSubmit, register, formState, reset, setError } = useForm();
+  const navigate = useNavigate();
+
   const { errors = {} } = formState;
 
   async function onSubmit(data) {
-    reset();
+    setIsLoading(true);
     if (type === "signup") {
       const admin = await signup(data);
       return admin;
     }
-    const admin = await login({
-      ...data,
-      remember: data.remember ? true : false,
-    });
-    setAdmin(admin);
+    const admin = await login(data);
+
+    const { errors = {} } = admin;
+    const errorKey = Object.keys(errors).at(0);
+
+    if (errorKey)
+      setError(`${errorKey}`, {
+        type: "manual",
+        message: admin.errors[errorKey],
+      });
+    else {
+      const { accessToken } = admin;
+      setAccessToken(accessToken);
+      if (data.remember) {
+        localStorage.setItem("accessToken", accessToken);
+      } else {
+        sessionStorage.setItem("accessToken", accessToken);
+      }
+      navigate("/overview");
+      reset();
+    }
+    setIsLoading(false);
   }
+
   return (
     <form action="" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       {type === "signup" && (
@@ -63,15 +85,16 @@ function AuthForm({ type }) {
       </div>
       {errors?.email && <Error message={errors.email.message} />}
       <div className={styles.inputBox}>
-        <label htmlFor="pass">
+        <label htmlFor="password">
           <HiLockClosed />
         </label>
         <input
           type={isVisible ? "text" : "password"}
-          id="pass"
+          id="password"
           placeholder="Password"
-          className={errors.pass ? styles.error : ""}
-          {...register("pass", {
+          value={"securePassword123"}
+          className={errors.password ? styles.error : ""}
+          {...register("password", {
             required: "This field is required",
             minLength: {
               value: 8,
@@ -89,7 +112,7 @@ function AuthForm({ type }) {
           {isVisible ? <IoEyeSharp /> : <IoEyeOffSharp />}
         </button>
       </div>
-      {errors?.pass && <Error message={errors.pass.message} />}
+      {errors?.password && <Error message={errors.password.message} />}
       {type !== "signup" && (
         <div className={styles.inputCheckBox}>
           <input type="checkbox" id="remember" {...register("remember")} />
@@ -97,8 +120,12 @@ function AuthForm({ type }) {
         </div>
       )}
 
-      <button className={styles.btn}>
-        {type === "signup" ? "Sign up" : "Sign in"}
+      <button className={styles.btn} disabled={isLoading}>
+        {isLoading
+          ? `...Signing ${type === "signup" ? "up" : "in"}`
+          : type === "signup"
+          ? "Sign up"
+          : "Sign in"}
       </button>
     </form>
   );

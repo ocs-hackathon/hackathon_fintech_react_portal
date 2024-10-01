@@ -6,14 +6,17 @@ import { useQuery } from "@tanstack/react-query";
 import { getCustomers } from "../../services/apiCustomers";
 
 import { useAppContext } from "../../contexts/AppContext";
+import Spinner from "../../ui/Spinner/Spinner";
 
 function Customers() {
   const params = useParams();
-  const { acessToken } = useAppContext();
-  const { data: customers} = useQuery({
+  const { accessToken } = useAppContext();
+  const { data: customers = [], isLoading } = useQuery({
     queryKey: ["customers"],
-    queryFn: getCustomers.bind({ acessToken }),
+    queryFn: getCustomers.bind({ accessToken }),
   });
+
+  if (isLoading) return <Spinner />;
   return (
     <div>
       {params.id ? (
@@ -22,7 +25,7 @@ function Customers() {
         <>
           <Header />
           <CustomersList customers={customers} />
-          <Pagination total={customers?.length} />
+          <Pagination total={customers.length} />
         </>
       )}
     </div>

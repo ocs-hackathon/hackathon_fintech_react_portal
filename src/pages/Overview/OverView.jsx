@@ -3,18 +3,18 @@ import Stats from "../../features/overview/Stats/Stats";
 import RecentCustomers from "../../features/overview/RecentCustomers/RecentCustomers";
 import LatestLoans from "../../features/overview/LatestLoans/LatestLoans";
 import OffersChart from "../../features/overview/charts/OffersChart";
-import { getOffers } from "../../testData";
 import { useQuery } from "@tanstack/react-query";
 import { getAllOffers } from "../../services/apiLoan";
 import { useAppContext } from "../../contexts/AppContext";
 import Spinner from "../../ui/Spinner/Spinner";
+import { useAuthenticate } from "../../features/authentication/useAuthenticate";
 
 function OverView() {
-  const { acessToken } = useAppContext();
-
-  const { data: offers = getOffers(), isLoading } = useQuery({
+  useAuthenticate();
+  const { accessToken } = useAppContext();
+  const { data: offers, isLoading } = useQuery({
     queryKey: ["loan_offers"],
-    queryFn: getAllOffers.bind({ acessToken }),
+    queryFn: getAllOffers.bind({ accessToken }),
   });
 
   if (isLoading) return <Spinner />;

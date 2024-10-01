@@ -8,22 +8,26 @@ import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
 import { useAppContext } from "../../../contexts/AppContext";
 import { useCustomers } from "../useCustomers";
-import { getCustomers } from "../../../testData";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 
 function Header() {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
   const [isSortOpened, setIsSortOpened] = useState(false);
+
   const { setSearchResult } = useAppContext();
-  const { customers = getCustomers() } = useCustomers();
-  const customersCpy = [...customers];
+  const { customers } = useCustomers();
+
+  const customersCpy = customers.map((customer) => {
+    return { ...customer, name: customer.fullName };
+  });
+
   const { register, handleSubmit, reset } = useForm();
 
   function onSort(data) {
     const { sortType = "asc", sortField } = data;
     if (
-      !Object.keys(customers.at(0))
+      !Object.keys(customersCpy.at(0))
         .map((el) => el.toLowerCase())
         .includes(sortField.toLowerCase())
     ) {
@@ -70,14 +74,14 @@ function Header() {
 
   function searchCustomer(searchKey) {
     if (searchKey.length < 3) {
-      setSearchResult({});
+      setSearchResult([]);
       return;
     }
     const key = searchKey.toLowerCase();
     const searchResults = customers.filter(
       (customer) =>
-        customer.id.toLowerCase().includes(key) ||
-        customer.name.toLowerCase().includes(key) ||
+        String(customer.id).toLowerCase().includes(key) ||
+        customer.fullName.toLowerCase().includes(key) ||
         customer.email.toLowerCase().includes(key)
     );
     setSearchResult(searchResults);

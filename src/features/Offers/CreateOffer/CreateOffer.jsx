@@ -30,6 +30,7 @@ function CreateOffer() {
           <label htmlFor="amount">Amount</label>
           <input
             type="number"
+            id="amount"
             {...register("amount", { required: "This field is required" })}
           />
           <div className={styles.error}>
@@ -40,20 +41,30 @@ function CreateOffer() {
           <label htmlFor="rate">Interest rate</label>
           <input
             type="text"
-            {...register("rate", { required: "This field is required" })}
+            id="rate"
+            {...register("interestRate", {
+              required: "This field is required",
+            })}
           />
           <div className={styles.error}>
-            {errors.rate && <Error message={errors.rate.message} />}
+            {errors.interestRate && (
+              <Error message={errors.interestRate.message} />
+            )}
           </div>
         </div>
         <div className={styles.box}>
           <label htmlFor="duration">Duration</label>
           <input
             type="text"
-            {...register("duration", { required: "This field is required" })}
+            id="duration"
+            {...register("durationToReturn", {
+              required: "This field is required",
+            })}
           />
           <div className={styles.error}>
-            {errors.duration && <Error message={errors.duration.message} />}
+            {errors.durationToReturn && (
+              <Error message={errors.durationToReturn.message} />
+            )}
           </div>
         </div>
         <div className={styles.btns}>

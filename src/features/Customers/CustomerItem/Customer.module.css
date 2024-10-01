@@ -29,7 +29,8 @@
   color: #ffa200;
   border-color: #ffa200;
 }
-.blocked {
+.blocked,
+.rejected {
   background-color: var(--bg-blocked);
   color: #f00101d2;
   border-color: #f00101d2;

@@ -3,19 +3,15 @@ import { useParams } from "react-router-dom";
 import { useCustomers } from "../../useCustomers";
 import styles from "./Personal.module.css";
 import { formatDate } from "../../../../utils/format";
-import { getCustomers } from "../../../../testData";
 
 function Personal() {
   const { id } = useParams();
-  const { customers = getCustomers() } = useCustomers();
-  const customer = customers?.find((customer) => id === customer.id);
-  const { name, country } = customer;
+  const { customers } = useCustomers();
+  console.log(customers);
+  const customer = customers?.find((customer) => id === String(customer.id));
+  const { fullName: name, address, creditScore, phoneNumber } = customer;
   const [firstName, lastName] = name.split(" ");
 
-  // first name, last name, middle name,
-  // phone, country, date of birth, bank, bank account,
-  // id(national or passport) and bank statement.
-  
   return (
     <div className={styles.personal}>
       <div>
@@ -37,7 +33,7 @@ function Personal() {
         </div>
         <div className={styles.row}>
           <p className={styles.heading}>Residence</p>
-          <p>{country}</p>
+          <p>{address}</p>
         </div>
       </div>
       <div>
@@ -51,8 +47,12 @@ function Personal() {
         </div>
 
         <div className={styles.row}>
-          <p className={styles.heading}>Residence</p>
-          <p>{country}</p>
+          <p className={styles.heading}>Credit score</p>
+          <p>{creditScore}</p>
+        </div>
+        <div className={styles.row}>
+          <p className={styles.heading}>Phone no.</p>
+          <p>{phoneNumber}</p>
         </div>
       </div>
     </div>

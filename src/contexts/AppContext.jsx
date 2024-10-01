@@ -4,11 +4,14 @@ const AppContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 function AppContextProvider({ children }) {
+  const defaultToken =
+    localStorage.getItem("accessToken") ||
+    sessionStorage.getItem("accessToken");
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isAuthed, setIsAuthed] = useState(true);
-  const [acessToken, setAccessToken] = useState("");
+  const [isAuthed, setIsAuthed] = useState(false);
+  const [accessToken, setAccessToken] = useState(defaultToken);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchResult, setSearchResult] = useState({});
+  const [searchResult, setSearchResult] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [admin, setAdmin] = useState({
     name: "Ahadu Sefefe",
@@ -34,7 +37,7 @@ function AppContextProvider({ children }) {
         setIsAuthed,
         currentPage,
         setCurrentPage,
-        acessToken,
+        accessToken,
         setAccessToken,
         recordPerPage,
         searchResult,

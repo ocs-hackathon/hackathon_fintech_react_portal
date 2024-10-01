@@ -7,14 +7,13 @@ import Header from "../../features/Offers/Header/Header";
 import { useAppContext } from "../../contexts/AppContext";
 import Modal from "../../ui/Modal/Modal";
 import CreateOffer from "../../features/Offers/CreateOffer/CreateOffer";
-import { getOffers } from "../../testData";
 
 function Offers() {
-  const { acessToken, showModal } = useAppContext();
+  const { accessToken, showModal } = useAppContext();
 
-  const { data: offers = getOffers(), isLoading } = useQuery({
+  const { data: offers = [], isLoading } = useQuery({
     queryKey: ["loan_offers"],
-    queryFn: getAllOffers.bind({ acessToken }),
+    queryFn: getAllOffers.bind({ accessToken }),
   });
 
   if (isLoading) return <Spinner />;
@@ -23,7 +22,7 @@ function Offers() {
       <h1>All Offers</h1>
       <Header />
       <OffersList offers={offers} />
-      <Pagination total={offers?.length} />
+      <Pagination total={offers.length} />
       {showModal && (
         <Modal>
           <CreateOffer />

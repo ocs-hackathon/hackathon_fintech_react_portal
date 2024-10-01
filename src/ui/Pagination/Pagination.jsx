@@ -3,10 +3,10 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useAppContext } from "../../contexts/AppContext";
 import styles from "./Pagination.module.css";
 
-function Pagination({ total }) {
+function Pagination({ total = 0 }) {
   const { currentPage, setCurrentPage, recordPerPage, totalPages } =
     useAppContext();
-  const totalPage = total || totalPages;
+  const totalPage = totalPages || total;
 
   const index = recordPerPage * currentPage;
   const lastIndex = index > totalPage ? totalPage : index;
