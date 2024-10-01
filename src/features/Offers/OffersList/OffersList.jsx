@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 
 import { useAppContext } from "../../../contexts/AppContext";
-import { getOffers } from "../../../testData";
 import OfferItem from "../OfferItem/OfferItem";
 import styles from "./OffersList.module.css";
 import { useEffect } from "react";
 
-function OffersList({ offers = getOffers() }) {
+function OffersList({ offers }) {
   const {
     searchResult,
     setSearchResult,
@@ -44,10 +43,10 @@ function OffersList({ offers = getOffers() }) {
 
       {Object.keys(searchResult).length
         ? searchResult?.map((offer) => (
-            <OfferItem key={offer.loanId} offer={offer} />
+            <OfferItem key={offer.id} offer={offer} />
           ))
         : offersPerPage?.map((offer) => (
-            <OfferItem key={offer.loanId} offer={offer} />
+            <OfferItem key={offer.id} offer={offer} />
           ))}
     </ul>
   );

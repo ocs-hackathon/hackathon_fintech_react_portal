@@ -7,14 +7,23 @@ import { getCustomers } from "../../services/apiCustomers";
 
 import { useAppContext } from "../../contexts/AppContext";
 import Spinner from "../../ui/Spinner/Spinner";
+import { useEffect } from "react";
 
 function Customers() {
   const params = useParams();
-  const { accessToken } = useAppContext();
+  const { accessToken, setTotalPages } = useAppContext();
+
   const { data: customers = [], isLoading } = useQuery({
     queryKey: ["customers"],
     queryFn: getCustomers.bind({ accessToken }),
   });
+
+  useEffect(
+    function () {
+      setTotalPages(customers.length);
+    },
+    [setTotalPages, customers]
+  );
 
   if (isLoading) return <Spinner />;
   return (

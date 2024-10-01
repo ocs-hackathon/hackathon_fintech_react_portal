@@ -16,6 +16,7 @@ export async function login(credentials) {
   }
 }
 
+
 export async function signup(credentials) {
   try {
     const res = await fetch(`${API_URL}/admin/createUser`, {

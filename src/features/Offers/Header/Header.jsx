@@ -10,7 +10,7 @@ import { useEffect } from "react";
 function Header() {
   const { setSearchResult, setShowModal, setTotalPages } = useAppContext();
   const { data: offers = getOffers() } = useQuery({
-    queryKey: ["offers"],
+    queryKey: ["loan_offers"],
     queryFn: getAllOffers,
   });
   function searchOffer(searchKey) {
@@ -33,7 +33,7 @@ function Header() {
     function () {
       setTotalPages(offers.length);
     },
-    [setTotalPages,offers]
+    [setTotalPages, offers]
   );
 
   return (

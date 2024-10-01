@@ -1,23 +1,21 @@
 import { IoMdClose } from "react-icons/io";
-import styles from "./CreateOffer.module.css";
 import { useForm } from "react-hook-form";
+
 import { useAppContext } from "../../../contexts/AppContext";
+import { useCreateOffer } from "./useCreateOffer";
+
+import styles from "./CreateOffer.module.css";
 import Error from "../../../ui/Error/Error";
-import { createLoanOffer } from "../../../services/apiLoan";
-import toast from "react-hot-toast";
+
 function CreateOffer() {
-  const { setShowModal, acessToken } = useAppContext();
+  const { setShowModal, accessToken } = useAppContext();
   const { register, formState, handleSubmit } = useForm();
   const { errors } = formState;
 
-  async function onSubmit(data) {
-    try {
-      const res = await createLoanOffer(data, acessToken);
-      if (res) setShowModal(false);
-    } catch (err) {
-      toast.error(err.message);
-      setShowModal(false);
-    }
+  const { isCreating, createLoan } = useCreateOffer();
+  function onSubmit(data) {
+    createLoan({ data, accessToken });
+    setShowModal(false);
   }
   return (
     <div className={styles.wrapper}>
@@ -32,6 +30,7 @@ function CreateOffer() {
             type="number"
             id="amount"
             {...register("amount", { required: "This field is required" })}
+            disabled={isCreating}
           />
           <div className={styles.error}>
             {errors.amount && <Error message={errors.amount.message} />}
@@ -45,6 +44,7 @@ function CreateOffer() {
             {...register("interestRate", {
               required: "This field is required",
             })}
+            disabled={isCreating}
           />
           <div className={styles.error}>
             {errors.interestRate && (
@@ -60,6 +60,7 @@ function CreateOffer() {
             {...register("durationToReturn", {
               required: "This field is required",
             })}
+            disabled={isCreating}
           />
           <div className={styles.error}>
             {errors.durationToReturn && (
@@ -71,8 +72,12 @@ function CreateOffer() {
           <button className={styles.btn} type="reset">
             Cancel
           </button>
-          <button className={`${styles.btn} ${styles.create}`} type="submit">
-            Create offer
+          <button
+            className={`${styles.btn} ${styles.create}`}
+            type="submit"
+            disabled={isCreating}
+          >
+            {isCreating ? "...Creating offer" : "Create offer"}
           </button>
         </div>
       </form>

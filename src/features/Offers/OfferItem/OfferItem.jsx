@@ -4,24 +4,24 @@ import styles from "./OfferItem.module.css";
 
 function OfferItem({ offer }) {
   const {
-    loanId,
-    issuedAt,
+    id: offerId,
+    // issuedAt,
     amount,
     interestRate,
-    duration,
-    issuedBy,
+    durationToReturn: duration,
+    // issuedBy,
     status,
-    borrowerId,
+    // borrowerId = "",
   } = offer;
   return (
     <li className={styles.offer}>
-      <span>#{loanId}</span>
-      <span>{formatDate(issuedAt)}</span>
+      <span>#{offerId}</span>
+      <span>{formatDate()}</span>
       <span>${amount}</span>
       <span>{interestRate}</span>
       <span>{duration}</span>
-      <span>#{issuedBy}</span>
-      <span>#{borrowerId}</span>
+      <span>#{123121}</span>
+      <span>#{432141}</span>
       <button className={`${styles[status]} ${styles.status}`}>{status}</button>
     </li>
   );

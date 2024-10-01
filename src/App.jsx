@@ -1,27 +1,31 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AppLayout from "./ui/AppLayout/AppLayout";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+
+
 import "./index.css";
+import { AppContextProvider } from "./contexts/AppContext";
 import OverView from "./pages/Overview/OverView";
 import Customers from "./pages/Customers/Customers";
+import Customer from "./features/Customers/Customer/Customer";
+import Offers from "./pages/Offers/Offers";
 import Transactions from "./features/transaction/Transactions";
 import Analytics from "./pages/Analytics/Analytics";
 import Settings from "./pages/Settings/Settings";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Login from "./pages/Login/Login";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
-import { AppContextProvider } from "./contexts/AppContext";
-import Customer from "./features/Customers/Customer/Customer";
+import SignUp from "./pages/Signup/SignUp";
+
+import ProtectedRoute from "./features/authentication/ProtectedRoute/ProtectedRoute";
+import AppLayout from "./ui/AppLayout/AppLayout";
 import Personal from "./features/Customers/Customer/Personal/Personal";
 import Doc from "./features/Customers/Customer/Document/Doc";
-import Offers from "./pages/Offers/Offers";
-import SignUp from "./pages/Signup/SignUp";
-import ProtectedRoute from "./features/authentication/ProtectedRoute/ProtectedRoute";
-import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 100,
+      staleTime: 0,
     },
   },
 });
@@ -30,6 +34,7 @@ function App() {
   return (
     <AppContextProvider>
       <QueryClientProvider client={queryClient}>
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         <BrowserRouter>
           <Routes>
             <Route index element={<Navigate replace to="login" />} />
