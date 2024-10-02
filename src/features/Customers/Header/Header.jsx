@@ -2,7 +2,7 @@ import { CiSliderHorizontal } from "react-icons/ci";
 import { BiSortAlt2 } from "react-icons/bi";
 
 import styles from "./Header.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "../../../ui/Box/Box";
 import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
@@ -15,7 +15,7 @@ function Header() {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
   const [isSortOpened, setIsSortOpened] = useState(false);
 
-  const { setSearchResult } = useAppContext();
+  const { setSearchResult, setTotalPages, searchResult } = useAppContext();
   const { customers } = useCustomers();
 
   const customersCpy = customers.map((customer) => {
@@ -86,6 +86,16 @@ function Header() {
     );
     setSearchResult(searchResults);
   }
+
+  useEffect(
+    function () {
+      setTotalPages((state) =>
+        searchResult.length ? searchResult.length : state
+      );
+    },
+    [searchResult, setTotalPages]
+  );
+
   return (
     <div>
       <h1>All Customers</h1>

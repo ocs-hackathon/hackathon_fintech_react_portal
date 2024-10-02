@@ -8,10 +8,10 @@ import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
 
 function Header() {
-  const { setSearchResult, setShowModal, setTotalPages } = useAppContext();
+  const { setSearchResult, setShowModal, setTotalPages, searchResult } =
+    useAppContext();
   const { offers } = useOffers();
   function searchOffer(searchKey) {
-    console.log(searchKey);
     if (searchKey.length < 3) {
       setSearchResult({});
       return;
@@ -19,18 +19,20 @@ function Header() {
     const key = searchKey.toLowerCase();
     const searchResults = offers.filter(
       (offer) =>
-        offer.loanId.toLowerCase().includes(key) ||
-        offer.issuedBy.toLowerCase().includes(key) ||
-        offer.amount == key
+        String(offer.id).toLowerCase().includes(key) ||
+        String(offer.amount).includes(key)
+      // offer.issuedBy.toLowerCase().includes(key) ||
     );
     setSearchResult(searchResults);
   }
 
   useEffect(
     function () {
-      setTotalPages(offers.length);
+      setTotalPages((state) =>
+        searchResult.length ? searchResult.length : state
+      );
     },
-    [setTotalPages, offers]
+    [setTotalPages, searchResult]
   );
 
   return (

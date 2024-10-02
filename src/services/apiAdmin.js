@@ -16,12 +16,14 @@ export async function login(credentials) {
   }
 }
 
-
-export async function signup(credentials) {
+export async function signup(credentials, accessToken) {
   try {
-    const res = await fetch(`${API_URL}/admin/createUser`, {
+    const res = await fetch(`${API_URL}/admin/createAdmin`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
       body: JSON.stringify(credentials),
     });
     if (!res.ok) throw new Error("Error occured while trying to log you in!");

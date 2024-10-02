@@ -12,5 +12,9 @@ export function useCustomers() {
     queryKey: ["customers"],
     queryFn: getCustomers.bind({ accessToken }),
   });
-  return { isLoadingCustomers, customers, error };
+  return {
+    isLoadingCustomers,
+    customers: customers?.filter((customer) => customer.role === "client"),
+    error,
+  };
 }

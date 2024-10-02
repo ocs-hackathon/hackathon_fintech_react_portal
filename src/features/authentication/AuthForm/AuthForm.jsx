@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function AuthForm({ type }) {
-  const { setAccessToken } = useAppContext();
+  const { setAccessToken, accessToken } = useAppContext();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, register, formState, reset, setError } = useForm();
@@ -24,7 +24,7 @@ function AuthForm({ type }) {
   async function onSubmit(data) {
     setIsLoading(true);
     if (type === "signup") {
-      const admin = await signup(data);
+      const admin = await signup(data, accessToken);
       return admin;
     }
     const admin = await login(data);
@@ -63,12 +63,13 @@ function AuthForm({ type }) {
             id="name"
             placeholder="Name"
             className={errors.name ? styles.error : ""}
-            {...register("name", {
+            {...register("fullName", {
               required: "This field is required",
             })}
           />
         </div>
       )}
+      {errors?.fullName && <Error message={errors.fullName.message} />}
       <div className={styles.inputBox}>
         <label htmlFor="email">
           <HiOutlineMail />
@@ -84,33 +85,35 @@ function AuthForm({ type }) {
         />
       </div>
       {errors?.email && <Error message={errors.email.message} />}
-      <div className={styles.inputBox}>
-        <label htmlFor="password">
-          <HiLockClosed />
-        </label>
-        <input
-          type={isVisible ? "text" : "password"}
-          id="password"
-          placeholder="Password"
-          className={errors.password ? styles.error : ""}
-          {...register("password", {
-            required: "This field is required",
-            minLength: {
-              value: 8,
-              message: "Please lengthen the character",
-            },
-          })}
-        />
-        <button
-          className={styles.eyeIcon}
-          onClick={(e) => {
-            e.preventDefault();
-            setIsVisible((state) => !state);
-          }}
-        >
-          {isVisible ? <IoEyeSharp /> : <IoEyeOffSharp />}
-        </button>
-      </div>
+      {type !== "signup" && (
+        <div className={styles.inputBox}>
+          <label htmlFor="password">
+            <HiLockClosed />
+          </label>
+          <input
+            type={isVisible ? "text" : "password"}
+            id="password"
+            placeholder="Password"
+            className={errors.password ? styles.error : ""}
+            {...register("password", {
+              required: "This field is required",
+              minLength: {
+                value: 8,
+                message: "Please lengthen the character",
+              },
+            })}
+          />
+          <button
+            className={styles.eyeIcon}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsVisible((state) => !state);
+            }}
+          >
+            {isVisible ? <IoEyeSharp /> : <IoEyeOffSharp />}
+          </button>
+        </div>
+      )}
       {errors?.password && <Error message={errors.password.message} />}
       {type !== "signup" && (
         <div className={styles.inputCheckBox}>
