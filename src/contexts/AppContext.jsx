@@ -12,6 +12,7 @@ function AppContextProvider({ children }) {
   const [accessToken, setAccessToken] = useState(defaultToken);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchResult, setSearchResult] = useState([]);
+  const [offerSearchResult, setOfferSearchResult] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [admin, setAdmin] = useState({
     name: "Ahadu Sefefe",
@@ -48,6 +49,8 @@ function AppContextProvider({ children }) {
         setAdmin,
         totalPages,
         setTotalPages,
+        offerSearchResult,
+        setOfferSearchResult,
       }}
     >
       {children}

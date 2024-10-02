@@ -7,7 +7,6 @@ import { formatDate } from "../../../../utils/format";
 function Personal() {
   const { id } = useParams();
   const { customers } = useCustomers();
-  console.log(customers);
   const customer = customers?.find((customer) => id === String(customer.id));
   const { fullName: name, address, creditScore, phoneNumber } = customer;
   const [firstName, lastName] = name.split(" ");

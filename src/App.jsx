@@ -1,8 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-
 
 import "./index.css";
 import { AppContextProvider } from "./contexts/AppContext";
@@ -21,6 +20,7 @@ import ProtectedRoute from "./features/authentication/ProtectedRoute/ProtectedRo
 import AppLayout from "./ui/AppLayout/AppLayout";
 import Personal from "./features/Customers/Customer/Personal/Personal";
 import Doc from "./features/Customers/Customer/Document/Doc";
+import Status from "./features/Customers/Customer/Status/Status";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,7 +34,7 @@ function App() {
   return (
     <AppContextProvider>
       <QueryClientProvider client={queryClient}>
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+        <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
             <Route index element={<Navigate replace to="login" />} />
@@ -50,6 +50,7 @@ function App() {
                       element={<Personal />}
                     />
                     <Route path="/customers/:id/document" element={<Doc />} />
+                    <Route path="/customers/:id/status" element={<Status />} />
                   </Route>
                 </Route>
                 <Route path="/transactions" element={<Transactions />} />

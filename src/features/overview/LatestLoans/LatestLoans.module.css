@@ -7,3 +7,10 @@
 .latest h3 {
   margin-bottom: 2rem;
 }
+.listHeading {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  font-weight: 500;
+  color: var(--color-grey-500);
+  margin-bottom: 1rem;
+}

@@ -9,6 +9,7 @@ import Spinner from "../../ui/Spinner/Spinner";
 import Header from "../../features/Offers/Header/Header";
 import Modal from "../../ui/Modal/Modal";
 import CreateOffer from "../../features/Offers/CreateOffer/CreateOffer";
+import NoResultError from "../../ui/NoResultError/NoResultError";
 
 function Offers() {
   const { accessToken, showModal } = useAppContext();
@@ -23,8 +24,14 @@ function Offers() {
     <div>
       <h1>All Offers</h1>
       <Header />
-      <OffersList offers={offers} />
-      <Pagination total={offers.length} />
+      {offers.length ? (
+        <>
+          <OffersList offers={offers} />
+          <Pagination total={offers.length} />
+        </>
+      ) : (
+        <NoResultError message="There are no Loan offers created. Click on create new offer at the top corner to start." />
+      )}
       {showModal && (
         <Modal>
           <CreateOffer />

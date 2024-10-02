@@ -18,14 +18,14 @@ function Customers() {
     <div>
       {params.id ? (
         <Outlet />
-      ) : 5 < 4 ? (
+      ) : customers.length ? (
         <>
           <Header />
           <CustomersList customers={customers} />
           <Pagination total={customers.length} />
         </>
       ) : (
-        <NoResultError />
+        <NoResultError message="No customers data found." />
       )}
     </div>
   );

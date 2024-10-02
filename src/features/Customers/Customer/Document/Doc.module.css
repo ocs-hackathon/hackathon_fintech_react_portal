@@ -1,0 +1,23 @@
+.errorContainer {
+  margin-top: 2rem;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.error {
+  width: 400px;
+  height: 200px;
+  background-size: cover;
+  background: url(../../../public/no_result3r.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.message {
+  color: var(--color-grey-400);
+  opacity: 0.5;
+  font-size: 1.8rem;
+  font-weight: 500;
+}

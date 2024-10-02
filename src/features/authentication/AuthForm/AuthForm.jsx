@@ -23,12 +23,20 @@ function AuthForm({ type }) {
 
   async function onSubmit(data) {
     setIsLoading(true);
+
     if (type === "signup") {
-      const admin = await signup(data, accessToken);
-      return admin;
+      const admin = await signup(data, accessToken, reset);
+      const dataReturned = admin || {};
+      setIsLoading(false);
+      if (Object.keys(dataReturned).length) {
+        console.log("user sign up success");
+        localStorage.removeItem("accessToken");
+        sessionStorage.removeItem("accessToken");
+        navigate("/login");
+      }
+      return;
     }
     const admin = await login(data);
-
     const { errors = {} } = admin;
     const errorKey = Object.keys(errors).at(0);
 
@@ -123,11 +131,7 @@ function AuthForm({ type }) {
       )}
 
       <button className={styles.btn} disabled={isLoading}>
-        {isLoading
-          ? `...Signing ${type === "signup" ? "up" : "in"}`
-          : type === "signup"
-          ? "Sign up"
-          : "Sign in"}
+        {type === "signup" ? "Sign up" : "Sign in"}
       </button>
     </form>
   );

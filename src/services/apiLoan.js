@@ -14,9 +14,7 @@ export async function getAllOffers() {
 }
 
 export async function createLoanOffer({ data: offer, accessToken }) {
-  console.log(offer);
-  console.log("accessTok:", accessToken);
-  const res = await fetch(`${API_URL}/offerr/createOffer`, {
+  const res = await fetch(`${API_URL}/offer/createOffer`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,9 +22,7 @@ export async function createLoanOffer({ data: offer, accessToken }) {
     },
     body: JSON.stringify(offer),
   });
-  console.log(res);
   if (!res.ok) throw new Error("Loan offer couldn't be created.");
   const data = await res.json();
-  console.log(data);
   return data;
 }

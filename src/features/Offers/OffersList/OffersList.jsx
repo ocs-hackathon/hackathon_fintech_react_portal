@@ -6,13 +6,8 @@ import styles from "./OffersList.module.css";
 import { useEffect } from "react";
 
 function OffersList({ offers }) {
-  const {
-    searchResult,
-    setSearchResult,
-    currentPage,
-    setCurrentPage,
-    recordPerPage,
-  } = useAppContext();
+  const { offerSearchResult, currentPage, setCurrentPage, recordPerPage } =
+    useAppContext();
 
   const index = recordPerPage * currentPage;
   const lastIndex = index > offers?.length ? offers?.length : index;
@@ -22,10 +17,9 @@ function OffersList({ offers }) {
 
   useEffect(
     function () {
-      setSearchResult({});
       setCurrentPage(1);
     },
-    [setCurrentPage, setSearchResult]
+    [setCurrentPage]
   );
 
   return (
@@ -41,8 +35,8 @@ function OffersList({ offers }) {
         <span>Status</span>
       </li>
 
-      {Object.keys(searchResult).length
-        ? searchResult?.map((offer) => (
+      {Object.keys(offerSearchResult).length
+        ? offerSearchResult?.map((offer) => (
             <OfferItem key={offer.id} offer={offer} />
           ))
         : offersPerPage?.map((offer) => (

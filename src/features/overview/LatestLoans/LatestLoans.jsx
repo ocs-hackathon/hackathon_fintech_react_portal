@@ -13,6 +13,13 @@ function LatestLoans({ offers }) {
   return (
     <ul className={styles.latest}>
       <h3>Latest offers</h3>
+      <li className={styles.listHeading}>
+        <span>Offer id</span>
+        <span>Amount</span>
+        <span>Interest rate</span>
+        <span>Duration</span>
+        <span>Offer status</span>
+      </li>
       {latest.map((offer) => (
         <LatestItem offer={offer} key={offer.id} />
       ))}

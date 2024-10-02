@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from "./NoResultError.module.css";
-function NoResultError({ message = "No Data to display." }) {
+function NoResultError({ message = "No data to be displayed." }) {
   return (
     <div className={styles.errorContainer}>
       <div className={styles.error}></div>

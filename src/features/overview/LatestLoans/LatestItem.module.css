@@ -1,6 +1,7 @@
 .offer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  color: var(--color-grey-400);
   margin-bottom: 2rem;
 }
 .bold {

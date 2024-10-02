@@ -21,6 +21,9 @@ function Customer() {
           <li>
             <NavLink to={`/customers/${id}/document`}>Document</NavLink>
           </li>
+          <li>
+            <NavLink to={`/customers/${id}/status`}>Status</NavLink>
+          </li>
         </ul>
       </nav>
       <main className={styles.main}>

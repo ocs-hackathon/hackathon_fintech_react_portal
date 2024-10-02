@@ -1,5 +1,5 @@
 .error {
-  height: 300px;
+  height: 190px;
   width: 700px;
   background-size: cover;
   background: url(../../../public/no_result3r.png);
@@ -15,6 +15,7 @@
 }
 .message {
   color: var(--color-grey-400);
+  opacity: 0.5;
   font-size: 1.8rem;
   font-weight: 500;
 }

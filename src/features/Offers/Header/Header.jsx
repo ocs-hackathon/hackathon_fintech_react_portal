@@ -8,12 +8,16 @@ import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
 
 function Header() {
-  const { setSearchResult, setShowModal, setTotalPages, searchResult } =
-    useAppContext();
+  const {
+    setOfferSearchResult,
+    setShowModal,
+    setTotalPages,
+    offerSearchResult,
+  } = useAppContext();
   const { offers } = useOffers();
   function searchOffer(searchKey) {
     if (searchKey.length < 3) {
-      setSearchResult({});
+      setOfferSearchResult({});
       return;
     }
     const key = searchKey.toLowerCase();
@@ -23,16 +27,16 @@ function Header() {
         String(offer.amount).includes(key)
       // offer.issuedBy.toLowerCase().includes(key) ||
     );
-    setSearchResult(searchResults);
+    setOfferSearchResult(searchResults);
   }
 
   useEffect(
     function () {
       setTotalPages((state) =>
-        searchResult.length ? searchResult.length : state
+        offerSearchResult.length ? offerSearchResult.length : state
       );
     },
-    [setTotalPages, searchResult]
+    [setTotalPages, offerSearchResult]
   );
 
   return (

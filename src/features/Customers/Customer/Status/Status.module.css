@@ -1,0 +1,57 @@
+.statusContainer {
+  margin-top: 1rem;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.status {
+  border: 1px solid;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 9rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+.pending {
+  background-color: var(--bg-pending);
+  color: #ffa200;
+  border-color: #ffa200;
+}
+.blocked,
+.rejected {
+  background-color: var(--bg-blocked);
+  color: #f00101d2;
+  border-color: #f00101d2;
+}
+.active {
+  background-color: var(--bg-active);
+  color: #028702;
+  border-color: #028702;
+}
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #ffffff;
+  border: 2px solid #dddddd6e;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  color: var(--color-grey-500);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+.select:hover {
+  border-color: #ccc;
+}
+
+/* Focus state */
+.select:focus {
+  border-color: #dca09d22;
+  box-shadow: 0 0 0.2rem #dca09d22;
+}
