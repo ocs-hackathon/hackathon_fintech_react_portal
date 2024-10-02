@@ -14,7 +14,12 @@ export function useAuthenticate() {
         try {
           const res = await verifyAdmin(accessToken);
           if (!res.ok) throw new Error(`Admin authentication failed.`);
-          setData(res);
+          setData(
+            localStorage.getItem("accessToken") ||
+              sessionStorage.getItem("accessToken")
+              ? res
+              : { ...res, ok: false }
+          );
           setIsAuthed(true);
           return res;
         } catch (err) {

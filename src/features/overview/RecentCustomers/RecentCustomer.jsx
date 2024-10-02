@@ -3,7 +3,7 @@ import { formatDate } from "../../../utils/format";
 import styles from "./RecentCustomer.module.css";
 
 function RecentCustomer({ customer }) {
-  const { name, status, createdAt } = customer;
+  const { fullName: name, status, createdAt } = customer;
   return (
     <li className={styles.user}>
       <div className={styles.left}>
@@ -14,6 +14,5 @@ function RecentCustomer({ customer }) {
     </li>
   );
 }
-
 
 export default RecentCustomer;

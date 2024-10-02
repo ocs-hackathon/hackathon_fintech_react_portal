@@ -1,18 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+
+import { useOffers } from "../useOffers";
 import { useAppContext } from "../../../contexts/AppContext";
+
+import styles from "./Header.module.css";
 import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
-import styles from "./Header.module.css";
-import { getAllOffers } from "../../../services/apiLoan";
-import { getOffers } from "../../../testData";
-import { useEffect } from "react";
 
 function Header() {
   const { setSearchResult, setShowModal, setTotalPages } = useAppContext();
-  const { data: offers = getOffers() } = useQuery({
-    queryKey: ["loan_offers"],
-    queryFn: getAllOffers,
-  });
+  const { offers } = useOffers();
   function searchOffer(searchKey) {
     console.log(searchKey);
     if (searchKey.length < 3) {

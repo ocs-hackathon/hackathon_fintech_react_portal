@@ -16,7 +16,7 @@ export async function getAllOffers() {
 export async function createLoanOffer({ data: offer, accessToken }) {
   console.log(offer);
   console.log("accessTok:", accessToken);
-  const res = await fetch(`${API_URL}/offer/createOffer`, {
+  const res = await fetch(`${API_URL}/offerr/createOffer`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

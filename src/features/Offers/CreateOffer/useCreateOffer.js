@@ -13,9 +13,9 @@ export function useCreateOffer() {
       queryClient.invalidateQueries({
         queryKey: ["loan_offers"],
       });
-      toast.success("New cabin successfuly created!");
+      toast.success("New offer successfuly created!");
     },
-    onError: (err) => toast.error(err.message),
+    onError: () => toast.error("Loan offer couldn't be created."),
   });
 
   return { isCreating, createLoan };

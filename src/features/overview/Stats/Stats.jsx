@@ -1,18 +1,29 @@
+/* eslint-disable react/prop-types */
+
+import { useEffect, useState } from "react";
 import { HiOutlineBanknotes, HiUserGroup } from "react-icons/hi2";
-import Stat from "../Stat/Stat";
-import styles from "./Stats.module.css";
 import { VscGraph } from "react-icons/vsc";
 import { FcMoneyTransfer } from "react-icons/fc";
-import { useEffect, useState } from "react";
+
+import Stat from "../Stat/Stat";
+import styles from "./Stats.module.css";
 import { formatMoney } from "../../../utils/format";
-function Stats() {
-  const totalCustomers = 10_000;
-  const totalLoanAmt = 4_000_000;
+
+function Stats({ offers, customers }) {
+  const totalCustomers = customers?.length * 100;
+  const totalLoanAmt =
+    offers.reduce((total, offer) => total + offer.amount, 0) * 10;
+
   const [custCount, setCustCount] = useState(0);
   const [totalLoan, setTotalLoan] = useState(0);
   const increment = Math.floor(totalCustomers / 10);
   const incrementLoan = Math.floor(totalLoanAmt / 10);
   const interval = 50;
+
+  const activeLoanCount = offers.filter(
+    (offer) => offer.status.toLowerCase() === "active"
+  ).length;
+  const activeLoanRate = (activeLoanCount / offers.length) * 100;
 
   useEffect(
     function () {
@@ -39,7 +50,14 @@ function Stats() {
         clearInterval(loanTimer);
       };
     },
-    [custCount, totalLoan]
+    [
+      custCount,
+      totalLoan,
+      incrementLoan,
+      increment,
+      totalCustomers,
+      totalLoanAmt,
+    ]
   );
 
   return (
@@ -63,13 +81,13 @@ function Stats() {
       <Stat bgColor="#4caf4f24" iconColor="#4caf50" icon={<FcMoneyTransfer />}>
         <div>
           <span className={styles.title}>Active loans</span>
-          <h3>40</h3>
+          <h3>{activeLoanCount}</h3>
         </div>
       </Stat>
       <Stat bgColor="#e0e7ff" iconColor="#374151" icon={<VscGraph />}>
         <div>
           <span className={styles.title}>Aceptance rate</span>
-          <h3>60%</h3>
+          <h3>{activeLoanRate}%</h3>
         </div>
       </Stat>
     </div>

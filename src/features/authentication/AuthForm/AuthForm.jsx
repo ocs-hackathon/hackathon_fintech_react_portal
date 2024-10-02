@@ -92,7 +92,6 @@ function AuthForm({ type }) {
           type={isVisible ? "text" : "password"}
           id="password"
           placeholder="Password"
-          value={"securePassword123"}
           className={errors.password ? styles.error : ""}
           {...register("password", {
             required: "This field is required",

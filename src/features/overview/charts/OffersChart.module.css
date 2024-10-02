@@ -1,9 +1,10 @@
-.chart{
-    padding: 1rem 2rem;
-    background-color: var(--color-grey-0);
-    border-radius: 0.8rem;
+.chart {
+  padding: 1rem;
+  background-color: var(--color-grey-0);
+  border-radius: 0.8rem;
+  width: 50%;
 }
-.chart h3{
-    font-size: 2rem;
-    margin-bottom: 2rem;
+.chart h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }

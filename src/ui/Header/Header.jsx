@@ -7,17 +7,17 @@ import { IoMdSunny } from "react-icons/io";
 import styles from "./Header.module.css";
 import { useAppContext } from "../../contexts/AppContext";
 
-
 function Header() {
   const { isDarkMode, toggleDarkMode } = useAppContext();
   const navigate = useNavigate();
   const { admin } = useAppContext();
 
   function logout() {
+    localStorage.removeItem("accessToken");
+    sessionStorage.removeItem("accessToken");
     navigate("/login");
   }
 
-  
   return (
     <div className={styles.header}>
       <div className={styles.profile}>

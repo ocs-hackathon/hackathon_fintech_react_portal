@@ -2,7 +2,13 @@
 import styles from "./LatestItem.module.css";
 
 function LatestItem({ offer }) {
-  const { loanId, amount, duration, interestRate, status } = offer;
+  const {
+    id: loanId,
+    amount,
+    durationToReturn: duration,
+    interestRate,
+    status,
+  } = offer;
   return (
     <li className={styles.offer}>
       <span className={styles.bold}>#{loanId}</span>

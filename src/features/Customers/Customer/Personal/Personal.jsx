@@ -29,7 +29,7 @@ function Personal() {
         </div>
         <div className={styles.row}>
           <p className={styles.heading}>Phone no</p>
-          <p>{`+251 986261979`}</p>
+          <p>{phoneNumber}</p>
         </div>
         <div className={styles.row}>
           <p className={styles.heading}>Residence</p>
@@ -49,10 +49,6 @@ function Personal() {
         <div className={styles.row}>
           <p className={styles.heading}>Credit score</p>
           <p>{creditScore}</p>
-        </div>
-        <div className={styles.row}>
-          <p className={styles.heading}>Phone no.</p>
-          <p>{phoneNumber}</p>
         </div>
       </div>
     </div>

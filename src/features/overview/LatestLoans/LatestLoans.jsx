@@ -13,8 +13,8 @@ function LatestLoans({ offers }) {
   return (
     <ul className={styles.latest}>
       <h3>Latest offers</h3>
-      {latest.map((lat) => (
-        <LatestItem offer={lat} key={lat.loanId} />
+      {latest.map((offer) => (
+        <LatestItem offer={offer} key={offer.id} />
       ))}
     </ul>
   );

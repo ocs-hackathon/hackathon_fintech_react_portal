@@ -8,6 +8,5 @@
 }
 .recents{
     display: flex;
-    justify-content: space-between;
     gap: 5rem;
 }

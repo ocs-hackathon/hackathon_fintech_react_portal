@@ -1,3 +1,4 @@
+import numeral from "numeral";
 export function formatDate(timestamp = Date.now()) {
   const date = new Date(timestamp);
   const formatter = new Intl.DateTimeFormat("en-US", {

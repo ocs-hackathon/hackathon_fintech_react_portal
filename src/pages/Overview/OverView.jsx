@@ -1,33 +1,28 @@
+import { useCustomers } from "../../features/Customers/useCustomers";
+
 import styles from "./OverView.module.css";
 import Stats from "../../features/overview/Stats/Stats";
-import RecentCustomers from "../../features/overview/RecentCustomers/RecentCustomers";
+// import RecentCustomers from "../../features/overview/RecentCustomers/RecentCustomers";
 import LatestLoans from "../../features/overview/LatestLoans/LatestLoans";
 import OffersChart from "../../features/overview/charts/OffersChart";
-import { useQuery } from "@tanstack/react-query";
-import { getAllOffers } from "../../services/apiLoan";
-import { useAppContext } from "../../contexts/AppContext";
 import Spinner from "../../ui/Spinner/Spinner";
-import { useAuthenticate } from "../../features/authentication/useAuthenticate";
+import { useOffers } from "../../features/Offers/useOffers";
 
 function OverView() {
-  useAuthenticate();
-  const { accessToken } = useAppContext();
-  const { data: offers, isLoading } = useQuery({
-    queryKey: ["loan_offers"],
-    queryFn: getAllOffers.bind({ accessToken }),
-  });
+  const { offers, isLoadingOffers } = useOffers();
+  const { customers, isLoadingCustomers } = useCustomers();
 
-  if (isLoading) return <Spinner />;
+  if (isLoadingOffers || isLoadingCustomers) return <Spinner />;
 
   return (
     <div className={styles.overview}>
       <h1>Overview</h1>
-      <Stats />
+      <Stats offers={offers} customers={customers} />
       <div className={styles.recents}>
-        <RecentCustomers />
+        <OffersChart offers={offers} />
         <LatestLoans offers={offers} />
       </div>
-      <OffersChart offers={offers} />
+      {/* <RecentCustomers customers={customers} /> */}
     </div>
   );
 }
