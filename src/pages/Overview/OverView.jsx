@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+
 import { useCustomers } from "../../features/Customers/useCustomers";
+import { useOffers } from "../../features/Offers/useOffers";
 
 import styles from "./OverView.module.css";
 import Stats from "../../features/overview/Stats/Stats";
@@ -6,13 +9,23 @@ import Stats from "../../features/overview/Stats/Stats";
 import LatestLoans from "../../features/overview/LatestLoans/LatestLoans";
 import OffersChart from "../../features/overview/charts/OffersChart";
 import Spinner from "../../ui/Spinner/Spinner";
-import { useOffers } from "../../features/Offers/useOffers";
 
 function OverView() {
   const { offers, isLoadingOffers } = useOffers();
   const { customers, isLoadingCustomers } = useCustomers();
 
-  if (isLoadingOffers || isLoadingCustomers) return <Spinner />;
+  const [fakeLoading, setFakeLoading] = useState(true);
+
+  useEffect(function () {
+    const wait = () => new Promise((res) => setTimeout(res, 1000));
+    async function toogleFakeLoading() {
+      await wait();
+      setFakeLoading(false);
+    }
+    toogleFakeLoading();
+  }, []);
+
+  if (isLoadingOffers || isLoadingCustomers || fakeLoading) return <Spinner />;
 
   return (
     <div className={styles.overview}>

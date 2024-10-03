@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
 import { useAppContext } from "../../contexts/AppContext";
-import { getAllOffers } from "../../services/apiLoan";
 
 import OffersList from "../../features/Offers/OffersList/OffersList";
 import Pagination from "../../ui/Pagination/Pagination";
@@ -10,23 +9,31 @@ import Header from "../../features/Offers/Header/Header";
 import Modal from "../../ui/Modal/Modal";
 import CreateOffer from "../../features/Offers/CreateOffer/CreateOffer";
 import NoResultError from "../../ui/NoResultError/NoResultError";
-import { useEffect } from "react";
+
+import { useOffers } from "../../features/Offers/useOffers";
 
 function Offers() {
-  const { accessToken, showModal, setTotalPages } = useAppContext();
+  const { showModal, setTotalPages } = useAppContext();
 
-  const { data: offers = [], isLoading } = useQuery({
-    queryKey: ["loan_offers"],
-    queryFn: getAllOffers.bind({ accessToken }),
-  });
+  const { offers, isLoadingOffers } = useOffers();
+
+  const [fakeLoading, setFakeLoading] = useState(true);
 
   useEffect(
     function () {
+      const wait = () => new Promise((res) => setTimeout(res, 1000));
       setTotalPages(offers.length);
+      async function toogleLoading() {
+        await wait();
+        setFakeLoading(false);
+      }
+      toogleLoading();
     },
     [setTotalPages, offers.length]
   );
-  if (isLoading) return <Spinner />;
+
+  if (isLoadingOffers || fakeLoading) return <Spinner />;
+
   return (
     <div>
       <h1>All Offers</h1>

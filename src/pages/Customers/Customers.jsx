@@ -8,22 +8,28 @@ import Pagination from "../../ui/Pagination/Pagination";
 import Spinner from "../../ui/Spinner/Spinner";
 import NoResultError from "../../ui/NoResultError/NoResultError";
 import { useAppContext } from "../../contexts/AppContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Customers() {
   const params = useParams();
   const { setTotalPages, setSearchResult } = useAppContext();
   const { customers, isLoadingCustomers } = useCustomers();
+  const [fakeLoading, setFakeLoading] = useState(true);
 
   useEffect(
     function () {
       setTotalPages(customers.length);
       setSearchResult([]);
+      const wait = () => new Promise((res) => setTimeout(res, 1000));
+      async function toogleLoading() {
+        await wait();
+        setFakeLoading(false);
+      }
+      toogleLoading();
     },
     [setTotalPages, customers.length, setSearchResult]
   );
-
-  if (isLoadingCustomers) return <Spinner />;
+  if (isLoadingCustomers || fakeLoading) return <Spinner />;
   return (
     <div>
       {params.id ? (

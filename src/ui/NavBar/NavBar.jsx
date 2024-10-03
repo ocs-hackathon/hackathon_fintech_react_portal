@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import {
   MdOutlineLocalOffer,
-  MdOutlineQueryStats,
+  // MdOutlineQueryStats,
   MdWindow,
 } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { FaSignInAlt } from "react-icons/fa";
-import { LuCircleDollarSign } from "react-icons/lu";
+// import { LuCircleDollarSign } from "react-icons/lu";
 import { FaUsers } from "react-icons/fa";
 
 function NavBar() {

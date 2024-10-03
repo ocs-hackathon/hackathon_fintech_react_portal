@@ -70,7 +70,7 @@ function CreateOffer() {
         </div>
         <div className={styles.btns}>
           <button className={styles.btn} type="reset">
-            Cancel
+            Clear
           </button>
           <button
             className={`${styles.btn} ${styles.create}`}
