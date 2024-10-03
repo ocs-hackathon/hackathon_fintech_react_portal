@@ -10,15 +10,22 @@ import Header from "../../features/Offers/Header/Header";
 import Modal from "../../ui/Modal/Modal";
 import CreateOffer from "../../features/Offers/CreateOffer/CreateOffer";
 import NoResultError from "../../ui/NoResultError/NoResultError";
+import { useEffect } from "react";
 
 function Offers() {
-  const { accessToken, showModal } = useAppContext();
+  const { accessToken, showModal, setTotalPages } = useAppContext();
 
   const { data: offers = [], isLoading } = useQuery({
     queryKey: ["loan_offers"],
     queryFn: getAllOffers.bind({ accessToken }),
   });
 
+  useEffect(
+    function () {
+      setTotalPages(offers.length);
+    },
+    [setTotalPages, offers.length]
+  );
   if (isLoading) return <Spinner />;
   return (
     <div>

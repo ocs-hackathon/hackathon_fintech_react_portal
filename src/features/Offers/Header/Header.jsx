@@ -17,7 +17,8 @@ function Header() {
   const { offers } = useOffers();
   function searchOffer(searchKey) {
     if (searchKey.length < 3) {
-      setOfferSearchResult({});
+      setOfferSearchResult([]);
+      setTotalPages(offers.length);
       return;
     }
     const key = searchKey.toLowerCase();

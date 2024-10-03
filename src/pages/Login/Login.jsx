@@ -14,7 +14,7 @@ function Login() {
     sessionStorage.getItem("accessToken")
   ) {
     setIsAuthed(true);
-    navigate(-1);
+    navigate("/overview");
   }
 
   return (

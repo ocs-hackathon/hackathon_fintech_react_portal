@@ -10,53 +10,72 @@ import Error from "../../../ui/Error/Error";
 import { HiOutlineUser } from "react-icons/hi2";
 import { useAppContext } from "../../../contexts/AppContext";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 // eslint-disable-next-line react/prop-types
 function AuthForm({ type }) {
   const { setAccessToken, accessToken } = useAppContext();
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const { handleSubmit, register, formState, reset, setError } = useForm();
   const navigate = useNavigate();
+
+  const { mutate: logIn, isPending: isSigningIn } = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      console.log(data);
+      const { errors = {}, accessToken = "" } = data;
+      const errorKey = Object.keys(errors).at(0);
+      if (errorKey) {
+        setError(`${errorKey}`, {
+          type: "manual",
+          message: data.errors[errorKey],
+        });
+        toast.error("Invalid email or password");
+        return;
+      }
+
+      toast.success("Signed in successfully!");
+      setAccessToken(accessToken);
+      rememberMe && localStorage.setItem("accessToken", accessToken);
+      !rememberMe && sessionStorage.setItem("accessToken", accessToken);
+      navigate("/overview");
+    },
+    onError: (err) => {
+      console.error(err.message);
+      toast.error("Oops something went wrong. Please try again.");
+    },
+  });
+
+  const { mutate: signUp, isPending: isSigningUp } = useMutation({
+    mutationFn: signup,
+    onSuccess: (data) => {
+      const { errors = {} } = data;
+      const errorKey = Object.keys(errors).at(0);
+      if (errorKey) {
+        setError(`${errorKey}`, {
+          type: "manual",
+          message: data.errors[errorKey],
+        });
+        return;
+      }
+      toast.success("Sign up went successful. Please login to continue!");
+      localStorage.removeItem("accessToken");
+      sessionStorage.removeItem("accessToken");
+      navigate("/login");
+    },
+    onError: (err) => {
+      console.error(err.message);
+      toast.error("Oops something went wrong. Please try again.");
+    },
+  });
 
   const { errors = {} } = formState;
 
   async function onSubmit(data) {
-    setIsLoading(true);
-
-    if (type === "signup") {
-      const admin = await signup(data, accessToken, reset);
-      const dataReturned = admin || {};
-      setIsLoading(false);
-      if (Object.keys(dataReturned).length) {
-        console.log("user sign up success");
-        localStorage.removeItem("accessToken");
-        sessionStorage.removeItem("accessToken");
-        navigate("/login");
-      }
-      return;
-    }
-    const admin = await login(data);
-    const { errors = {} } = admin;
-    const errorKey = Object.keys(errors).at(0);
-
-    if (errorKey)
-      setError(`${errorKey}`, {
-        type: "manual",
-        message: admin.errors[errorKey],
-      });
-    else {
-      const { accessToken } = admin;
-      setAccessToken(accessToken);
-      if (data.remember) {
-        localStorage.setItem("accessToken", accessToken);
-      } else {
-        sessionStorage.setItem("accessToken", accessToken);
-      }
-      navigate("/overview");
-      reset();
-    }
-    setIsLoading(false);
+    if (type === "signup") signUp({ data, accessToken, reset });
+    logIn(data);
   }
 
   return (
@@ -125,13 +144,24 @@ function AuthForm({ type }) {
       {errors?.password && <Error message={errors.password.message} />}
       {type !== "signup" && (
         <div className={styles.inputCheckBox}>
-          <input type="checkbox" id="remember" {...register("remember")} />
+          <input
+            type="checkbox"
+            id="remember"
+            value={rememberMe}
+            onChange={() => setRememberMe((state) => !state)}
+          />
           <label htmlFor="remember">Remember me</label>
         </div>
       )}
 
-      <button className={styles.btn} disabled={isLoading}>
-        {type === "signup" ? "Sign up" : "Sign in"}
+      <button className={styles.btn} disabled={isSigningIn || isSigningUp}>
+        {isSigningIn || isSigningUp
+          ? type === "signup"
+            ? "...Signning up"
+            : "...Signing in"
+          : type === "signup"
+          ? "Sign up"
+          : "Sign in"}
       </button>
     </form>
   );

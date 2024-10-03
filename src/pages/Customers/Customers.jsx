@@ -7,11 +7,20 @@ import Header from "../../features/Customers/Header/Header";
 import Pagination from "../../ui/Pagination/Pagination";
 import Spinner from "../../ui/Spinner/Spinner";
 import NoResultError from "../../ui/NoResultError/NoResultError";
+import { useAppContext } from "../../contexts/AppContext";
+import { useEffect } from "react";
 
 function Customers() {
   const params = useParams();
-
+  const { setTotalPages } = useAppContext();
   const { customers, isLoadingCustomers } = useCustomers();
+
+  useEffect(
+    function () {
+      setTotalPages(customers.length);
+    },
+    [setTotalPages, customers.length]
+  );
 
   if (isLoadingCustomers) return <Spinner />;
   return (
