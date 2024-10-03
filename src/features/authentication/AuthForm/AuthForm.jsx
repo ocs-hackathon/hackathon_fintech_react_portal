@@ -74,7 +74,10 @@ function AuthForm({ type }) {
   const { errors = {} } = formState;
 
   async function onSubmit(data) {
-    if (type === "signup") signUp({ data, accessToken, reset });
+    if (type === "signup") {
+      signUp({ data, accessToken, reset });
+      return;
+    }
     logIn(data);
   }
 

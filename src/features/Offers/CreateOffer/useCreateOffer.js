@@ -9,7 +9,6 @@ export function useCreateOffer() {
   const { isLoading: isCreating, mutate: createLoan } = useMutation({
     mutationFn: createLoanOffer,
     onSuccess: () => {
-      console.log("succCreated");
       queryClient.invalidateQueries({
         queryKey: ["loan_offers"],
       });

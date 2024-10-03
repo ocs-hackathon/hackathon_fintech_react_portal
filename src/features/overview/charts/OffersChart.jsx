@@ -14,7 +14,7 @@ import {
 
 function OffersChart({ offers }) {
   const { isDarkMode } = useAppContext();
-  const data = offers.map((offer, i) => {
+  const data = offers?.slice(0, 20).map((offer, i) => {
     return {
       label: formatDate(Date.now() - i * 1000 * 60 * 60 * 24).slice(0, -6),
       amount: offer.amount / 1000,

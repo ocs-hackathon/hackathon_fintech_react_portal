@@ -12,7 +12,7 @@ import { formatMoney } from "../../../utils/format";
 function Stats({ offers, customers }) {
   const totalCustomers = customers?.length * 100;
   const totalLoanAmt =
-    offers.reduce((total, offer) => total + offer.amount, 0) * 10;
+    offers?.reduce((total, offer) => total + offer.amount, 0) * 10;
 
   const [custCount, setCustCount] = useState(0);
   const [totalLoan, setTotalLoan] = useState(0);
@@ -20,7 +20,7 @@ function Stats({ offers, customers }) {
   const incrementLoan = Math.floor(totalLoanAmt / 10);
   const interval = 50;
 
-  const activeLoanCount = offers.filter(
+  const activeLoanCount = offers?.filter(
     (offer) => offer.status.toLowerCase() === "active"
   ).length;
   const activeLoanRate = (activeLoanCount / offers.length) * 100;

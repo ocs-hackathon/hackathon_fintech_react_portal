@@ -6,6 +6,9 @@ import styles from "./OffersList.module.css";
 import { useEffect } from "react";
 
 function OffersList({ offers }) {
+  const offersReversed = offers.map(
+    (_, i, offers) => offers[offers.length - i - 1]
+  );
   const { offerSearchResult, currentPage, setCurrentPage, recordPerPage } =
     useAppContext();
 
@@ -13,7 +16,10 @@ function OffersList({ offers }) {
   const lastIndex = index > offers?.length ? offers?.length : index;
   const rem = index - lastIndex;
   const firstIndex = lastIndex - recordPerPage;
-  const offersPerPage = offers?.slice(firstIndex + rem, lastIndex);
+  const offersPerPage = offersReversed.slice(firstIndex + rem, lastIndex);
+  const offerSearchResultPerPage = offerSearchResult?.length
+    ? offerSearchResult?.slice(firstIndex + rem, lastIndex)
+    : offerSearchResult;
 
   useEffect(
     function () {
@@ -36,7 +42,7 @@ function OffersList({ offers }) {
       </li>
 
       {Object.keys(offerSearchResult).length
-        ? offerSearchResult?.map((offer) => (
+        ? offerSearchResultPerPage?.map((offer) => (
             <OfferItem key={offer.id} offer={offer} />
           ))
         : offersPerPage?.map((offer) => (

@@ -16,7 +16,7 @@ function Header() {
   } = useAppContext();
   const { offers } = useOffers();
   function searchOffer(searchKey) {
-    if (searchKey.length < 3) {
+    if (!searchKey.length) {
       setOfferSearchResult([]);
       setTotalPages(offers.length);
       return;

@@ -37,11 +37,11 @@ function Status() {
 
   const { mutate: blockUser } = useMutation({
     mutationFn: blockCustomer,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["customers"],
       });
-      toast.success(data?.message);
+      toast.success("User bloked successfully!");
     },
     onError: (err) => {
       console.error(err.message);
@@ -79,6 +79,7 @@ function Status() {
           <option value="active">Active</option>
           <option value="rejected">Reject</option>
           <option value="blocked">Block</option>
+          <option value="pending">Pending</option>
         </select>
       </form>
     </div>

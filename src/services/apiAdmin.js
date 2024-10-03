@@ -16,7 +16,9 @@ export async function login(credentials) {
   }
 }
 
-export async function signup(credentials, accessToken,reset) {
+export async function signup(args) {
+  const { data: credentials, accessToken, reset } = args;
+
   try {
     const res = await fetch(`${API_URL}/admin/createAdmin`, {
       method: "POST",
@@ -26,15 +28,14 @@ export async function signup(credentials, accessToken,reset) {
       },
       body: JSON.stringify(credentials),
     });
-    console.log(res);
+
     if (!res.ok) throw new Error("Error occured while trying to log you in!");
     const data = await res.json();
-    console.log(data);
+
     return data;
   } catch (err) {
     console.error(err.message);
     reset();
-    toast.error("Something went wrong!");
   }
 }
 

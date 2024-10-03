@@ -15,7 +15,8 @@ export async function getCustomers() {
 
 export async function updateCustomer(args) {
   const { status, id, accessToken } = args;
-  const res = await fetch(`${API_URL}/auth/updateStatus/${id}`, {
+  console.log(status);
+  const res = await fetch(`${API_URL}/auth/update-status/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +31,7 @@ export async function updateCustomer(args) {
 
 export async function blockCustomer(args) {
   const { id, accessToken } = args;
-  const res = await fetch(`${API_URL}/user/blockUser?id=${id}`, {
+  const res = await fetch(`${API_URL}/user/blockUser/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
