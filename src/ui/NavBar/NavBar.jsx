@@ -38,12 +38,12 @@ function NavBar() {
             <span>Transactions</span>
           </NavLink>
         </li> */}
-        <li>
+        {/* <li>
           <NavLink to="analytics" className={styles.link}>
             <MdOutlineQueryStats className={styles.icon} />
             <span>Analytics</span>
           </NavLink>
-        </li>
+        </li> */}
       </ul>
       <ul className={styles.other}>
         <li>
