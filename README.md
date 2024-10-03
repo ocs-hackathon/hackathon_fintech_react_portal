@@ -14,7 +14,7 @@ This admin portal serves as the management interface for a microloan system that
 
 - **Transaction Monitoring:**  
   Monitor transactions made through the XRP Ledger for transparency and accountability.# ADMIN PORTAL
-### Getting Started
+## Getting Started
 
 #### Prerequisites
 
@@ -26,13 +26,13 @@ Before you begin, ensure you have the following installed:
 You can verify your installations by running:
 - node -v
 - npm -v
-##### Installation
-###### Cloning the repository 
+### Installation
+### Cloning the repository 
 git clone https://github.com/yourusername/your-repo-name.git
-####### Navigate to the directory 
+### Navigate to the directory 
 cd your-repo-name
-######## Install the necessary dependencies 
+### Install the necessary dependencies 
 run this command npm install 
-######### Start the project
+### Start the project
 run npm run dev
 
