@@ -12,14 +12,15 @@ import { useEffect } from "react";
 
 function Customers() {
   const params = useParams();
-  const { setTotalPages } = useAppContext();
+  const { setTotalPages, setSearchResult } = useAppContext();
   const { customers, isLoadingCustomers } = useCustomers();
 
   useEffect(
     function () {
       setTotalPages(customers.length);
+      setSearchResult([]);
     },
-    [setTotalPages, customers.length]
+    [setTotalPages, customers.length, setSearchResult]
   );
 
   if (isLoadingCustomers) return <Spinner />;
