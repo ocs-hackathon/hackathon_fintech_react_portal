@@ -1,6 +1,6 @@
 import { Outlet, useParams } from "react-router-dom";
 
-import { useCustomers } from "../../features/Customers/useCustomers";
+import { useCustomers } from "../../hooks/useCustomers";
 
 import CustomersList from "../../features/Customers/CustomersList/CustomersList";
 import Header from "../../features/Customers/Header/Header";

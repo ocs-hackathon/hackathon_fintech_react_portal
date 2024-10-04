@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useOffers } from "../useOffers";
+import { useOffers } from "../../../hooks/useOffers";
 import { useAppContext } from "../../../contexts/AppContext";
 
 import styles from "./Header.module.css";

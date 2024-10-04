@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useCustomers } from "../../useCustomers";
+import { useCustomers } from "../../../../hooks/useCustomers";
 import styles from "./Doc.module.css";
 import NoDocError from "./NoDocError";
 

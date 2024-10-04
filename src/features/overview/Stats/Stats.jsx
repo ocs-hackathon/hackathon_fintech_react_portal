@@ -23,7 +23,11 @@ function Stats({ offers, customers }) {
   const activeLoanCount = offers?.filter(
     (offer) => offer.status.toLowerCase() === "active"
   ).length;
-  const activeLoanRate = (activeLoanCount / offers.length) * 100;
+
+  const grantedLoanCount = offers?.filter(
+    (offer) => offer.status.toLowerCase() === "granted"
+  ).length;
+  const activeLoanRate = (grantedLoanCount / offers.length) * 100;
 
   useEffect(
     function () {

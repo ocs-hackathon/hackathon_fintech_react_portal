@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { useCustomers } from "../../features/Customers/useCustomers";
-import { useOffers } from "../../features/Offers/useOffers";
+import { useCustomers } from "../../hooks/useCustomers";
+import { useOffers } from "../../hooks/useOffers";
 
 import styles from "./OverView.module.css";
 import Stats from "../../features/overview/Stats/Stats";

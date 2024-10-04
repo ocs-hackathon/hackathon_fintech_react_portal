@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { useCustomers } from "../../useCustomers";
+import { useCustomers } from "../../../../hooks/useCustomers";
 
 import styles from "./status.module.css";
 import { useState } from "react";

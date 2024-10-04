@@ -30,6 +30,28 @@ const queryClient = new QueryClient({
   },
 });
 
+
+/**
+ * Main App component that sets up the routing, context providers, and query clients.
+ * 
+ * The component integrates:
+ * - **React Router** for client-side routing and navigation.
+ * - **React Query** for data fetching, caching, and synchronization with server state.
+ * - **Context Providers** for managing global app states such as authentication.
+ * - **Toast notifications** using `react-hot-toast` for success and error feedback.
+ * 
+ * It defines protected routes, lazy-loaded components, and error handling for the entire app.
+ * The `AppContextProvider` supplies the application-wide context, and `QueryClientProvider`
+ * handles the React Query setup.
+ * 
+ * @component
+ * 
+ * @example
+ * <App />
+ * 
+ * @returns {JSX.Element} - The rendered App component, with routing and providers.
+ */
+
 function App() {
   return (
     <AppContextProvider>

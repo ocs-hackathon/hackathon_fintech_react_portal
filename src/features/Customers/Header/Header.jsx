@@ -7,7 +7,7 @@ import Box from "../../../ui/Box/Box";
 import Date from "../../../ui/Date/Date";
 import Input from "../../../ui/Input/Input";
 import { useAppContext } from "../../../contexts/AppContext";
-import { useCustomers } from "../useCustomers";
+import { useCustomers } from "../../../hooks/useCustomers";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 

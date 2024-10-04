@@ -10,7 +10,7 @@ import Modal from "../../ui/Modal/Modal";
 import CreateOffer from "../../features/Offers/CreateOffer/CreateOffer";
 import NoResultError from "../../ui/NoResultError/NoResultError";
 
-import { useOffers } from "../../features/Offers/useOffers";
+import { useOffers } from "../../hooks/useOffers";
 
 function Offers() {
   const { showModal, setTotalPages } = useAppContext();
