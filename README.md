@@ -30,7 +30,7 @@ You can verify your installations by running:
 ### Cloning the repository 
 git clone https://github.com/ocs-hackathon/hackathon_fintech_react_portal.git
 ### Navigate to the directory 
-cd your-repo-name
+cd hackathon_fintech_react_portal
 ### Install the necessary dependencies 
 run this command npm install 
 ### Start the project
