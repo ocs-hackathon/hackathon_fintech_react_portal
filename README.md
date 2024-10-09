@@ -32,7 +32,7 @@ git clone https://github.com/ocs-hackathon/hackathon_fintech_react_portal.git
 ### Navigate to the directory 
 cd hackathon_fintech_react_portal
 ### Install the necessary dependencies 
-run this command npm install 
+npm install 
 ### Start the project
-run npm run dev
+npm run dev
 
