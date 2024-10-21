@@ -28,11 +28,11 @@ You can verify your installations by running:
 - npm -v
 ### Installation
 ### Cloning the repository 
-git clone https://github.com/yourusername/your-repo-name.git
+git clone https://github.com/ocs-hackathon/hackathon_fintech_react_portal.git
 ### Navigate to the directory 
-cd your-repo-name
+cd hackathon_fintech_react_portal
 ### Install the necessary dependencies 
-run this command npm install 
+npm install 
 ### Start the project
-run npm run dev
+npm run dev
 
