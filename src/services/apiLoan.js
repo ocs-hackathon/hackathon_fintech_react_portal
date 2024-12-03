@@ -1,6 +1,5 @@
 import { API_URL } from "./config";
 
-
 /**
  * Fetches all loan offers from the API.
  *
@@ -28,6 +27,8 @@ export async function getAllOffers() {
     },
   });
   if (!res.ok) throw new Error("Error while fetching loan offers");
+  // const data = await res.json();
+  // if (!Array.isArray(data)) throw new Error("Access denied");
   return await res.json();
 }
 

@@ -1,12 +1,13 @@
-.overview{
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
-.overview h1{
-    margin-bottom: 3rem;
+.overview h1 {
+  margin-bottom: 3rem;
 }
-.recents{
-    display: flex;
-    gap: 5rem;
+.recents {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
 }

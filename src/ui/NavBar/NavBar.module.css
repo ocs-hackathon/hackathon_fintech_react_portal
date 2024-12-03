@@ -25,11 +25,28 @@
   color: var(--color-grey-500);
   font-weight: 500;
 }
+.plus {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--color-grey-500);
+  display: grid;
+  place-items: center;
+  color: var(--color-grey-0);
+}
+
 .link:hover,
 :global(.active) {
   color: var(--color-primary);
   background-color: var(--color-grey-100);
   border-left-color: var(--color-primary);
+}
+.link:hover .plus {
+  background-color: var(--color-primary);
+}
+.link:hover .plus svg {
+  color: var(--color-grey-0) !important;
 }
 
 .link:hover svg,

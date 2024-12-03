@@ -7,7 +7,10 @@ import LatestItem from "./LatestItem";
 function LatestLoans({ offers }) {
   const latest = offers
     .map((offer) => offer)
-    .sort((a, b) => b.issuedAt - a.issuedAt)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
     .slice(0, 7);
 
   return (
@@ -18,7 +21,7 @@ function LatestLoans({ offers }) {
         <span>Amount</span>
         <span>Interest rate</span>
         <span>Duration</span>
-        <span>Offer status</span>
+        <span>Status</span>
       </li>
       {latest.map((offer) => (
         <LatestItem offer={offer} key={offer.id} />

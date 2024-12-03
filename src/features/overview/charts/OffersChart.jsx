@@ -36,33 +36,37 @@ function OffersChart({ offers }) {
   return (
     <div className={styles.chart}>
       <h3>Loans</h3>
-      <ResponsiveContainer height={500} width="100%">
-        <AreaChart data={data}>
-          <XAxis
-            dataKey="label"
-            tick={{ fill: colors.text }}
-            tickLine={{ stroke: colors.text }}
-          />
-          <YAxis
-            unit="K"
-            tick={{ fill: colors.text }}
-            tickLine={{ stroke: colors.text }}
-          />
-          <CartesianGrid strokeDasharray="4" />
-          <Tooltip contentStyle={{ backgroundColor: colors.background }} />
-          <Area
-            animateNewValues
-            animationBegin={10}
-            dataKey="amount"
-            type="monotone"
-            stroke={colors.amount.stroke}
-            fill={colors.amount.fill}
-            strokeWidth={2}
-            name="Loan amount"
-            unit="K ETB"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      {offers.length ? (
+        <ResponsiveContainer height={500} width="100%">
+          <AreaChart data={data}>
+            <XAxis
+              dataKey="label"
+              tick={{ fill: colors.text }}
+              tickLine={{ stroke: colors.text }}
+            />
+            <YAxis
+              unit="K"
+              tick={{ fill: colors.text }}
+              tickLine={{ stroke: colors.text }}
+            />
+            <CartesianGrid strokeDasharray="4" />
+            <Tooltip contentStyle={{ backgroundColor: colors.background }} />
+            <Area
+              animateNewValues
+              animationBegin={10}
+              dataKey="amount"
+              type="monotone"
+              stroke={colors.amount.stroke}
+              fill={colors.amount.fill}
+              strokeWidth={2}
+              name="Loan amount"
+              unit="K ETB"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      ) : (
+        "No Loans To display"
+      )}
     </div>
   );
 }

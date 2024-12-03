@@ -22,7 +22,7 @@ function Offers() {
   useEffect(
     function () {
       const wait = () => new Promise((res) => setTimeout(res, 1000));
-      setTotalPages(offers.length);
+      setTotalPages(offers?.length);
       async function toogleLoading() {
         await wait();
         setFakeLoading(false);

@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-
 /**
  * AuthForm component that handles user authentication (sign in or sign up).
  * It uses the `react-hook-form` library for form management and the `react-query`
@@ -21,18 +20,18 @@ import toast from "react-hot-toast";
  * the form behaves as either a sign-in or sign-up form. The component also includes
  * support for showing or hiding the password, "remember me" functionality, and error
  * handling using toast notifications.
- * 
+ *
  * @component
- * 
+ *
  * @param {Object} props - Props for the component.
  * @param {'signin' | 'signup'} props.type - Determines whether the form is for signing in or signing up.
- * 
+ *
  * @returns {JSX.Element} The rendered AuthForm component.
- * 
+ *
  * @example
  * <AuthForm type="signin" />
  * <AuthForm type="signup" />
-*/
+ */
 
 // eslint-disable-next-line react/prop-types
 function AuthForm({ type }) {
@@ -81,7 +80,9 @@ function AuthForm({ type }) {
         });
         return;
       }
-      toast.success("Sign up went successful. Please login to continue!");
+      toast.success(
+        "Sign up went successful. Please check your email for temporary password."
+      );
       localStorage.removeItem("accessToken");
       sessionStorage.removeItem("accessToken");
       navigate("/login");
@@ -184,7 +185,7 @@ function AuthForm({ type }) {
             ? "...Signning up"
             : "...Signing in"
           : type === "signup"
-          ? "Sign up"
+          ? "Create Account"
           : "Sign in"}
       </button>
     </form>

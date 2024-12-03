@@ -9,6 +9,7 @@ function LatestItem({ offer }) {
     interestRate,
     status,
   } = offer;
+  console.log(offer);
   return (
     <li className={styles.offer}>
       <span className={styles.bold}>#{loanId}</span>

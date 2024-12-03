@@ -21,7 +21,9 @@ function SignUp() {
       <div className={styles.leftBg}></div>
       <div className={styles.wrapper}>
         <Logo />
-        <h1 className={styles.heading}>Sign Up</h1>
+        <h1 className={styles.heading} style={{ fontSize: "4rem" }}>
+          Create Account
+        </h1>
         <AuthForm type={"signup"} />
       </div>
     </div>

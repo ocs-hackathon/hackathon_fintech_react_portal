@@ -1,0 +1,33 @@
+{
+  "overveiw": {},
+  "loanOffers": {
+    "title": "የሁሉም ብድሮች ዝርዝር",
+    "loanId": "የብድር መታወቂያ",
+    "issuedAt": "የተሰጠበት ቀን",
+    "amount": "መጠን",
+    "interestRate": "የወለድ መጠን",
+    "duration": "ቆይታ",
+    "issuedBy": "የሰጠው መታወቂያ",
+    "borrowerId": "የተበደረ መታወቂያ",
+    "status": "ሁኔታ",
+    "new": "አዲስ ብድር"
+  },
+  "customers": {
+    "userId": "የተጠቃሚ መታወቂያ",
+    "name": "ስም",
+    "email": "ኢሜል",
+    "address": "አድራሻ",
+    "status": "ሁኔታ",
+    "loanNow": "አሁን ብድር ይውሰዱ",
+    "search": "ደንበኛ ፈልግ"
+  },
+  "settings": {
+    "account": "ደንበኛ መለያ",
+    "setAccountSettings": "የደንበኛ መለያ ቅንብሮችዎን ከዚህ በታች ያስተካክሉ",
+    "name": "ስም",
+    "email": "ኢሜል",
+    "currentPassword": "ወቅታዊ የሚስጥር ቃል",
+    "newPassword": "አዲስ የሚስጥር ቃል",
+    "saveChanges": "ለውጦችን አሁን ያስቀምጡ"
+  }
+}

@@ -2,13 +2,11 @@ import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import {
   MdOutlineLocalOffer,
-  // MdOutlineQueryStats,
   MdWindow,
 } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
-import { FaSignInAlt } from "react-icons/fa";
-// import { LuCircleDollarSign } from "react-icons/lu";
 import { FaUsers } from "react-icons/fa";
+import { HiPlus } from "react-icons/hi";
 
 function NavBar() {
   return (
@@ -54,8 +52,10 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="signup" className={styles.link}>
-            <FaSignInAlt />
-            <span>Sign up</span>
+            <span className={styles.plus}>
+              <HiPlus />
+            </span>
+            <span>Create account</span>
           </NavLink>
         </li>
       </ul>

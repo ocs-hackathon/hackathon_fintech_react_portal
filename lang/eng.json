@@ -1,0 +1,12 @@
+{
+  "overview": {
+    "main": "overview",
+    "totalCustomers": "total customers",
+    "totalLoans": "total loans",
+    "activeLoans": "active loans",
+    "acceptanceRate": "acceptance rate"
+  },
+  "loan": {
+    "all": "All offers"
+  }
+}
